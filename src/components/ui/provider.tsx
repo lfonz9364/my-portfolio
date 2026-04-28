@@ -2,15 +2,20 @@
 
 import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
 // https://github.com/pacocoursey/next-themes/issues/387 to resolve issue with next themes
-import { ThemeProvider } from "@teispace/next-themes";
-import { ColorModeProvider, type ColorModeProviderProps } from "./color-mode";
+import { ThemeProviderProps } from "@teispace/next-themes";
+import dynamic from "next/dynamic";
 
-export function Provider(props: ColorModeProviderProps) {
+const NextThemesProvider = dynamic(
+  () => import("@teispace/next-themes").then((e) => e.ThemeProvider),
+  // Disabling SSR to prevent it rendering before knowing client's preference
+  // Resolving Hydration issue with style tag mismatched
+  { ssr: false },
+);
+
+export function Provider({ children }: ThemeProviderProps) {
   return (
-    <ThemeProvider>
-      <ChakraProvider value={defaultSystem}>
-        <ColorModeProvider {...props} />
-      </ChakraProvider>
-    </ThemeProvider>
+    <NextThemesProvider attribute="class" defaultTheme="system" enableSystem>
+      <ChakraProvider value={defaultSystem}>{children}</ChakraProvider>
+    </NextThemesProvider>
   );
 }
