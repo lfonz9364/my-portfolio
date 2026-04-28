@@ -1,36 +1,250 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Developer Portfolio (Next.js + Contentful)
 
-## Getting Started
+A modern, CMS-powered developer portfolio built with **Next.js App Router**, **Contentful**, and deployed on **Vercel**.
 
-First, run the development server:
+This portfolio is designed with a **product mindset**, allowing recruiters and visitors to quickly explore projects and experience by **filtering based on skills**.
+
+---
+
+## 🌐 Live Demo
+
+tbc
+
+---
+
+## ✨ Features
+
+- 🔎 **Skill-based filtering**
+  - Filter projects and experience by technologies (React, Next.js, TypeScript, etc.)
+  - URL-driven filters (shareable links)
+
+- 🧠 **Unified Work Page**
+  - Projects + Experience in one place
+  - Faster scanning for recruiters
+
+- 🧾 **Project Detail Pages**
+  - Problem → Solution → Tech Stack → Outcome
+  - GitHub & live demo links
+
+- 🧩 **Headless CMS (Contentful)**
+  - Manage content without code changes
+  - Structured data (projects, experience, skills)
+
+- ⚡ **Performance Optimized**
+  - Static + ISR rendering
+  - Deployed on Vercel Edge
+
+- 🧭 **Clean UX Flow**
+  - Home → Work → Filter → Project → Contact
+
+---
+
+## 🧭 User Flow
+
+```mermaid
+flowchart TD
+  A[User lands on Home] --> B[Home Screen]
+  B --> C{Next action}
+
+  C -->|About| D[About Screen]
+  C -->|Work| E[Work Screen]
+  C -->|Contact| F[Contact Screen]
+
+  E --> E1[View Projects + Experience]
+  E1 --> E2{Use Skill Filters?}
+
+  E2 -->|Yes| E3[Select skills]
+  E3 --> E4[Filtered results]
+  E4 --> G[Project Detail]
+
+  E2 -->|No| E5[Browse all]
+  E5 --> G
+
+  G --> H{Interested?}
+  H -->|Yes| F
+  H -->|No| I[Exit]
+```
+
+---
+
+## 🧱 UI Wireframe
+
+```mermaid
+flowchart TD
+  A["Header / Nav"] --> B["Hero Section"]
+  B --> C["Skills"]
+  C --> D["Work Section"]
+
+  D --> E["Filters"]
+  D --> F["Projects"]
+  D --> G["Experience"]
+
+  F --> F1["Project Card"]
+  G --> G1["Experience Card"]
+
+  A --> H["Contact Section"]
+```
+
+---
+
+## 🏗️ System Architecture
+
+```mermaid
+flowchart LR
+  A["User"] --> B["Vercel Hosting"]
+  B --> C["Next.js App"]
+
+  C --> D["App Router Pages"]
+  C --> E["Contentful Client"]
+
+  E --> F["Contentful CMS"]
+
+  C --> G["Filter Logic (URL Params)"]
+  C --> H["ISR / Static Rendering"]
+
+  I["GitHub"] --> J["Vercel CI/CD"]
+  J --> B
+```
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS _(or Chakra UI if you choose)_
+
+### Backend / Data
+
+- Contentful (Headless CMS)
+- Contentful Delivery API
+- Contentful Preview API
+
+### Deployment & DevOps
+
+- Vercel (Hosting + Edge + ISR)
+- GitHub (CI/CD integration)
+
+### Features & Architecture
+
+- Server Components
+- Client Components (for filters)
+- URL Search Params filtering
+- Incremental Static Regeneration (ISR)
+
+---
+
+## 🧩 Content Model (Contentful)
+
+### `skill`
+
+- name (React, Next.js, etc.)
+- slug (react, nextjs)
+- category (frontend, backend, etc.)
+
+### `project`
+
+- title
+- slug
+- description
+- skills (linked entries)
+- githubUrl
+- liveUrl
+
+### `experience`
+
+- company
+- role
+- startDate
+- endDate
+- skills (linked entries)
+
+---
+
+## 🔎 Filtering Logic
+
+- Users select skills → updates URL:
+
+```text
+/work?skills=react,nextjs
+```
+
+- Filtering applies to:
+  - Projects
+  - Experience
+
+- Supports:
+  - AND filtering (default)
+  - OR filtering (optional)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone repo
+
+```bash
+git clone https://github.com/yourusername/portfolio.git
+cd portfolio
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Environment variables
+
+Create `.env.local`:
+
+```bash
+CONTENTFUL_SPACE_ID=xxx
+CONTENTFUL_ACCESS_TOKEN=xxx
+CONTENTFUL_PREVIEW_ACCESS_TOKEN=xxx
+CONTENTFUL_ENVIRONMENT=master
+```
+
+### 4. Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Push to GitHub
+2. Import project into Vercel
+3. Add environment variables
+4. Deploy
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 💡 Why this project?
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This portfolio demonstrates:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- ✅ Strong frontend engineering (Next.js + TypeScript)
+- ✅ CMS-driven architecture
+- ✅ Product thinking (filter UX)
+- ✅ Scalable data modeling
+- ✅ Performance optimization (ISR)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📬 Contact
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Email: _(your email)_
+- LinkedIn: _(your profile)_
+- GitHub: _(your GitHub)_
+
+---
+
+## 📄 License
+
+MI
