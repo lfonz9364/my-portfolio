@@ -4,6 +4,11 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["@chakra-ui/react"],
   },
+  turbopack: {
+    resolveAlias: {
+      "@/*": "./src/*",
+    },
+  },
   images: {
     remotePatterns: [
       {
