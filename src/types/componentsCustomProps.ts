@@ -1,11 +1,17 @@
+import {
+  BadgeProps as ChakraBadgeProps,
+  ButtonProps as ChakraButtonProps,
+} from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { Experience, Project } from "./contenful";
 
-export type ButtonProps = {
+export type BadgeProps = ChakraBadgeProps & {
+  children: string;
+};
+
+export type ButtonProps = ChakraButtonProps & {
   href?: string;
   children: ReactNode;
-  variant?: "primary" | "secondary";
-  external?: boolean;
 };
 
 export type SectionHeadingProps = {
