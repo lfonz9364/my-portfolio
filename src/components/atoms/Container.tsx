@@ -1,7 +1,8 @@
+import { Container as ChakraContainer } from "@chakra-ui/react";
 import { PropsWithChildren } from "react";
 
 export const Container = ({ children }: PropsWithChildren) => (
-  <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+  <ChakraContainer maxW="6xl" px={{ base: 4, md: 6 }} py={{ base: 8, md: 12 }}>
     {children}
-  </div>
+  </ChakraContainer>
 );

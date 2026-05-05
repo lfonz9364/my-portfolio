@@ -1,16 +1,14 @@
 import { Container } from "@/components/atoms/Container";
 import { Footer } from "@/components/organisms/Footer";
-import { Navbar } from "@/components/organisms/NavBar";
-import { PropsWithChildren } from "react";
+import { NavBar } from "@/components/organisms/NavBar";
+import { Box } from "@chakra-ui/react";
 
-export const PageLayout = ({ children }: PropsWithChildren) => (
-  <>
-    <Navbar />
+export const PageLayout = ({ children }: { children: React.ReactNode }) => (
+  <Box bg="gray.50" color="gray.900" minH="100vh">
+    <NavBar />
 
-    <main>
-      <Container>{children}</Container>
-    </main>
+    <Container>{children}</Container>
 
     <Footer />
-  </>
+  </Box>
 );
