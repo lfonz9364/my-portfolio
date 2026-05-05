@@ -3,7 +3,7 @@ import {
   getHeroSection,
   getProjects,
 } from "@/lib/contenful-queries";
-import { ExperienceEntry, ProjectEntry } from "@/lib/definitions";
+import { Experience, Project } from "@/types/contenful";
 
 export const revalidate = 60;
 
@@ -35,7 +35,7 @@ export default async function HomePage() {
       <section className="mb-16">
         <h2 className="mb-6 text-2xl font-semibold">Projects</h2>
         <div className="grid gap-6 md:grid-cols-2">
-          {projects.map((project: ProjectEntry) => (
+          {projects.map((project: Project) => (
             <article key={project.sys.id} className="rounded-xl border p-5">
               <h3 className="text-xl font-medium">{`${project.fields.title}`}</h3>
               <p className="mt-2 text-sm text-gray-600">
@@ -49,7 +49,7 @@ export default async function HomePage() {
       <section>
         <h2 className="mb-6 text-2xl font-semibold">Experience</h2>
         <div className="space-y-4">
-          {experiences.map((experience: ExperienceEntry) => (
+          {experiences.map((experience: Experience) => (
             <article key={experience.sys.id} className="rounded-xl border p-5">
               <h3 className="font-medium">
                 {`${experience.fields.role} — ${experience.fields.company}`}
