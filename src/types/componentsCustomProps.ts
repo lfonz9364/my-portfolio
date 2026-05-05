@@ -12,3 +12,9 @@ export type SectionHeadingProps = {
   title: string;
   description?: string;
 };
+
+export type SkillFilterProps = {
+  skills: string[];
+  selectedSkill: string;
+  onSelectSkill: (skill: string) => void;
+};
