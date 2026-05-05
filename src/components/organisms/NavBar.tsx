@@ -1,5 +1,11 @@
-import { Container } from "@/components/atoms/Container";
-import Link from "next/link";
+import {
+  Box,
+  Link as ChakraLink,
+  Container,
+  Flex,
+  HStack,
+} from "@chakra-ui/react";
+import NextLink from "next/link";
 
 const links = [
   { href: "/", label: "Home" },
@@ -9,26 +15,38 @@ const links = [
   { href: "/contact", label: "Contact" },
 ];
 
-export const Navbar = () => (
-  <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur">
-    <Container>
-      <nav className="flex h-16 items-center justify-between">
-        <Link href="/" className="text-lg font-bold text-slate-950">
-          Fonzie
-        </Link>
+export const NavBar = () => (
+  <Box
+    as="header"
+    position="sticky"
+    top={0}
+    zIndex={50}
+    bg="whiteAlpha.900"
+    borderBottomWidth="1px"
+    borderColor="gray.200"
+    backdropFilter="blur(10px)"
+  >
+    <Container maxW="6xl" px={{ base: 4, md: 6 }}>
+      <Flex h="16" align="center" justify="space-between">
+        <ChakraLink asChild fontWeight="bold" color="gray.900">
+          <NextLink href="/">Fonzie</NextLink>
+        </ChakraLink>
 
-        <div className="hidden gap-6 md:flex">
+        <HStack gap={6} display={{ base: "none", md: "flex" }}>
           {links.map((link) => (
-            <Link
+            <ChakraLink
+              asChild
               key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-slate-600 hover:text-emerald-700"
+              color="gray.600"
+              fontSize="sm"
+              fontWeight="medium"
+              _hover={{ color: "green.600", textDecoration: "none" }}
             >
-              {link.label}
-            </Link>
+              <NextLink href={link.href}>{link.label}</NextLink>
+            </ChakraLink>
           ))}
-        </div>
-      </nav>
+        </HStack>
+      </Flex>
     </Container>
-  </header>
+  </Box>
 );
