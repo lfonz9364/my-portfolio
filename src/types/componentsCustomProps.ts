@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Experience, Project } from "./contenful";
 
 export type ButtonProps = {
   href?: string;
@@ -22,4 +23,9 @@ export type SkillFilterProps = {
 export type HeroIntroProps = {
   title: string;
   subtitle: string;
+};
+
+export type HomeTemplateProps = {
+  projects: Project[];
+  experiences: Experience[];
 };
