@@ -1,29 +1,17 @@
 import { ButtonProps } from "@/types/componentsCustomProps";
-import Link from "next/link";
+import { Button as ChakraButton, Link as ChakraLink } from "@chakra-ui/react";
+import NextLink from "next/link";
 
-export const Button = ({
-  href,
-  children,
-  variant = "primary",
-  external = false,
-}: ButtonProps) => {
-  const className =
-    variant === "primary"
-      ? "rounded-full bg-emerald-600 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-700"
-      : "rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 hover:border-emerald-600 hover:text-emerald-700";
-
+export const Button = ({ href, children, ...restProps }: ButtonProps) => {
   if (!href) {
-    return <button className={className}>{children}</button>;
+    return <ChakraButton {...restProps}>{children}</ChakraButton>;
   }
 
   return (
-    <Link
-      href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noreferrer" : undefined}
-      className={className}
-    >
-      {children}
-    </Link>
+    <ChakraLink asChild>
+      <NextLink href={href}>
+        <ChakraButton {...restProps}>{children}</ChakraButton>
+      </NextLink>
+    </ChakraLink>
   );
 };

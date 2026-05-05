@@ -1,25 +1,65 @@
+import { Badge } from "@/components/atoms/Badge";
 import { Button } from "@/components/atoms/Button";
-import { HeroIntroProps } from "@/types/componentsCustomProps";
+import { Box, Heading, HStack, Stack, Text, Wrap } from "@chakra-ui/react";
 
-export const HeroIntro = ({ title, subtitle }: HeroIntroProps) => (
-  <section className="py-20 md:py-28">
-    <div className="max-w-3xl">
-      <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-emerald-600">
-        {process.env.JOB_TITLES}
-      </p>
+const skills = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "React Native",
+  "Node.js",
+  "Contentful",
+];
 
-      <h1 className="text-4xl font-bold tracking-tight text-slate-950 md:text-6xl">
-        {title}
-      </h1>
+export const HeroIntro = () => (
+  <Box as="section" py={{ base: 16, md: 24 }}>
+    <Stack gap={6} maxW="4xl">
+      <Text
+        color="green.600"
+        fontSize="sm"
+        fontWeight="semibold"
+        textTransform="uppercase"
+        letterSpacing="wide"
+      >
+        Frontend Engineer • Melbourne
+      </Text>
 
-      <p className="mt-6 text-lg leading-8 text-slate-600">{subtitle}</p>
+      <Heading
+        as="h1"
+        size={{ base: "4xl", md: "6xl" }}
+        lineHeight="1.05"
+        color="gray.900"
+      >
+        Building scalable web & mobile products with real-world impact.
+      </Heading>
 
-      <div className="mt-8 flex flex-wrap gap-4">
-        <Button href="/projects">View Projects</Button>
-        <Button href="/contact" variant="secondary">
+      <Text maxW="2xl" fontSize={{ base: "md", md: "lg" }} color="gray.600">
+        7+ years experience across React, Next.js, TypeScript, and React Native.
+        Focused on performance, clean architecture, and user experience.
+      </Text>
+
+      <HStack gap={4} flexWrap="wrap">
+        <Button href="/projects" colorPalette="green" rounded="full">
+          View Projects
+        </Button>
+
+        <Button href="/contact" variant="outline" rounded="full">
           Contact Me
         </Button>
-      </div>
-    </div>
-  </section>
+      </HStack>
+
+      <Wrap gap={3} pt={4}>
+        {skills.map((skill) => (
+          <Badge
+            key={skill}
+            colorPalette="green"
+            variant="subtle"
+            rounded="full"
+          >
+            {skill}
+          </Badge>
+        ))}
+      </Wrap>
+    </Stack>
+  </Box>
 );
