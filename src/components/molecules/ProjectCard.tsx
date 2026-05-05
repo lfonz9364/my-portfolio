@@ -1,6 +1,14 @@
 import { Badge } from "@/components/atoms/Badge";
-import { Project } from "@/types/contenful";
-import Link from "next/link";
+import { Project, Skill } from "@/types/contenful";
+import {
+  Card,
+  Link as ChakraLink,
+  HStack,
+  Stack,
+  Text,
+  Wrap,
+} from "@chakra-ui/react";
+import NextLink from "next/link";
 
 export const ProjectCard = ({ project }: { project: Project }) => {
   const {
@@ -17,57 +25,55 @@ export const ProjectCard = ({ project }: { project: Project }) => {
   } = project;
 
   return (
-    <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-      {featured && (
-        <span className="mb-4 inline-flex rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">
-          Featured
-        </span>
-      )}
+    <Card.Root
+      bg="white"
+      borderColor="gray.200"
+      rounded="2xl"
+      shadow="sm"
+      transition="all 0.2s"
+      _hover={{ transform: "translateY(-4px)", shadow: "lg" }}
+    >
+      <Card.Body>
+        <Stack gap={4}>
+          {featured && (
+            <Badge colorPalette="yellow" alignSelf="flex-start">
+              Featured
+            </Badge>
+          )}
 
-      <h3 className="text-xl font-bold text-slate-950">{title}</h3>
+          <Card.Title color="gray.900">{title}</Card.Title>
 
-      <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-600">
-        {shortDescription}
-      </p>
+          <Text color="gray.600" fontSize="sm" lineHeight="1.7">
+            {shortDescription}
+          </Text>
 
-      <div className="mt-5 flex flex-wrap gap-2">
-        {skills?.map((skill, index) => (
-          <Badge key={`${id}-${skill.fields.name}-${index}`}>
-            {skill.fields.name}
-          </Badge>
-        ))}
-      </div>
+          <Wrap gap={2}>
+            {skills?.map((skill: Skill, index: number) => (
+              <Badge key={`${id}-${skill.fields.name}-${index}`}>
+                {skill.fields.name}
+              </Badge>
+            ))}
+          </Wrap>
 
-      <div className="mt-6 flex flex-wrap gap-3">
-        <Link
-          href={`/projects/${slug}`}
-          className="text-sm font-semibold text-emerald-700 hover:text-emerald-900"
-        >
-          View case study →
-        </Link>
+          <HStack gap={4} pt={2}>
+            <ChakraLink asChild color="green.600" fontWeight="semibold">
+              <NextLink href={`/projects/${slug}`}>Case Study →</NextLink>
+            </ChakraLink>
 
-        {githubUrl && (
-          <Link
-            href={githubUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="text-sm font-semibold text-slate-700 hover:text-slate-950"
-          >
-            GitHub
-          </Link>
-        )}
+            {githubUrl && (
+              <ChakraLink asChild color="gray.600" fontWeight="semibold">
+                <NextLink href={githubUrl}>GitHub</NextLink>
+              </ChakraLink>
+            )}
 
-        {liveUrl && (
-          <Link
-            href={liveUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="text-sm font-semibold text-slate-700 hover:text-slate-950"
-          >
-            Live site
-          </Link>
-        )}
-      </div>
-    </article>
+            {liveUrl && (
+              <ChakraLink asChild color="gray.600" fontWeight="semibold">
+                <NextLink href={liveUrl}>Live site</NextLink>
+              </ChakraLink>
+            )}
+          </HStack>
+        </Stack>
+      </Card.Body>
+    </Card.Root>
   );
 };
