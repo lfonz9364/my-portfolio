@@ -5,9 +5,7 @@ export const HeroIntro = ({ title, subtitle }: HeroIntroProps) => (
   <section className="py-20 md:py-28">
     <div className="max-w-3xl">
       <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-emerald-600">
-        Frontend Engineer | Typescript, React, React Native, Next.js & Flutter |
-        Scalable UI/UX, DX-focused | Full Stack Experience | Real-world problem
-        solver
+        {process.env.JOB_TITLES}
       </p>
 
       <h1 className="text-4xl font-bold tracking-tight text-slate-950 md:text-6xl">
