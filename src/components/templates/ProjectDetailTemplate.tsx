@@ -1,0 +1,52 @@
+import { Badge } from "@/components/atoms/Badge";
+import { Button } from "@/components/atoms/Button";
+import { Project } from "@/types/contenful";
+import Link from "next/link";
+
+export const ProjectDetailTemplate = ({ project }: { project: Project }) => {
+  const {
+    fields: { title, shortDescription, skills, liveUrl, githubUrl },
+  } = project;
+  return (
+    <article className="py-16">
+      <Link
+        href="/projects"
+        className="text-sm font-semibold text-emerald-700 hover:text-emerald-900"
+      >
+        ← Back to projects
+      </Link>
+
+      <div className="mt-8 max-w-3xl">
+        <h1 className="text-4xl font-bold text-slate-950 md:text-5xl">
+          {title}
+        </h1>
+
+        <p className="mt-6 text-lg leading-8 text-slate-600">
+          {shortDescription}
+        </p>
+
+        <div className="mt-6 flex flex-wrap gap-2">
+          {skills?.map((skill, index) => (
+            <Badge key={`${skill.fields.name}-${index}`}>
+              {skill.fields.name}
+            </Badge>
+          ))}
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-4">
+          {liveUrl && (
+            <Button href={liveUrl} external>
+              View Live
+            </Button>
+          )}
+
+          {githubUrl && (
+            <Button href={githubUrl} variant="secondary" external>
+              View GitHub
+            </Button>
+          )}
+        </div>
+      </div>
+    </article>
+  );
+};
