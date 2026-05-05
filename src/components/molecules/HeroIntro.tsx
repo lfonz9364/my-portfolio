@@ -50,14 +50,7 @@ export const HeroIntro = () => (
 
       <Wrap gap={3} pt={4}>
         {skills.map((skill) => (
-          <Badge
-            key={skill}
-            colorPalette="green"
-            variant="subtle"
-            rounded="full"
-          >
-            {skill}
-          </Badge>
+          <Badge key={skill}>{skill}</Badge>
         ))}
       </Wrap>
     </Stack>
