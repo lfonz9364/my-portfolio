@@ -18,3 +18,8 @@ export type SkillFilterProps = {
   selectedSkill: string;
   onSelectSkill: (skill: string) => void;
 };
+
+export type HeroIntroProps = {
+  title: string;
+  subtitle: string;
+};
