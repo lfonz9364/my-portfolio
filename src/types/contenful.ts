@@ -1,4 +1,5 @@
 import { Document } from "@contentful/rich-text-types";
+import { Entry, EntryFieldTypes, EntrySkeletonType } from "contentful";
 
 export type Skill = {
   sys: { id: string };
@@ -34,3 +35,65 @@ export type Experience = {
     skills?: Skill[];
   };
 };
+
+export type HeroSection = {
+  sys: { id: string };
+  fields: {
+    title: string;
+    subtitle?: string;
+    ctaText?: string;
+    ctaLink?: string;
+  };
+};
+
+export type SkillSkeleton = EntrySkeletonType<
+  {
+    name: EntryFieldTypes.Text;
+    slug: EntryFieldTypes.Symbol;
+  },
+  "skill"
+>;
+
+export type ProjectSkeleton = EntrySkeletonType<
+  {
+    title: EntryFieldTypes.Text;
+    slug: EntryFieldTypes.Symbol;
+    shortDescription: EntryFieldTypes.Text;
+    body: EntryFieldTypes.RichText;
+    skills?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<SkillSkeleton>>;
+    githubUrl?: EntryFieldTypes.Symbol;
+    liveUrl?: EntryFieldTypes.Symbol;
+    featured?: EntryFieldTypes.Boolean;
+  },
+  "project"
+>;
+
+export type ExperienceSkeleton = EntrySkeletonType<
+  {
+    company: EntryFieldTypes.Text;
+    role: EntryFieldTypes.Text;
+    summary?: EntryFieldTypes.Text;
+    startDate: EntryFieldTypes.Date;
+    endDate?: EntryFieldTypes.Date;
+    skills?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<SkillSkeleton>>;
+  },
+  "experience"
+>;
+
+export type HeroSkeleton = EntrySkeletonType<
+  {
+    title: EntryFieldTypes.Text;
+    subtitle?: EntryFieldTypes.Text;
+    ctaText?: EntryFieldTypes.Text;
+    ctaLink?: EntryFieldTypes.Symbol;
+  },
+  "heroSection"
+>;
+
+export type SkillEntry = Entry<SkillSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">;
+export type ProjectEntry = Entry<ProjectSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">;
+export type ExperienceEntry = Entry<
+  ExperienceSkeleton,
+  "WITHOUT_UNRESOLVABLE_LINKS"
+>;
+export type HeroEntry = Entry<HeroSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">;
