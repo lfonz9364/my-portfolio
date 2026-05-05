@@ -1,6 +1,6 @@
+import { Badge } from "@/components/atoms/Badge";
 import { Project } from "@/types/contenful";
 import Link from "next/link";
-import { Badge } from "../atoms/Badge";
 
 export const ProjectCard = ({ project }: { project: Project }) => {
   const {

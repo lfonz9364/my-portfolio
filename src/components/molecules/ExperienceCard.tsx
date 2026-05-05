@@ -1,5 +1,5 @@
+import { Badge } from "@/components/atoms/Badge";
 import { Experience } from "@/types/contenful";
-import { Badge } from "../atoms/Badge";
 
 export const ExperienceCard = ({ experience }: { experience: Experience }) => {
   const {

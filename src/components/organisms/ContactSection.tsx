@@ -1,5 +1,5 @@
-import { Button } from "../atoms/Button";
-import { SectionHeading } from "../atoms/SectionHeading";
+import { Button } from "@/components/atoms/Button";
+import { SectionHeading } from "@/components/atoms/SectionHeading";
 
 export const ContactSection = () => (
   <section className="py-16">

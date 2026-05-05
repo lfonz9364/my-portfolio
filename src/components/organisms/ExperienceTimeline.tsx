@@ -1,6 +1,6 @@
+import { SectionHeading } from "@/components/atoms/SectionHeading";
+import { ExperienceCard } from "@/components/molecules/ExperienceCard";
 import { Experience } from "@/types/contenful";
-import { SectionHeading } from "../atoms/SectionHeading";
-import { ExperienceCard } from "../molecules/ExperienceCard";
 
 export const ExperienceTimeline = ({
   experiences,

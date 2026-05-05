@@ -1,5 +1,5 @@
+import { Container } from "@/components/atoms/Container";
 import Link from "next/link";
-import { Container } from "../atoms/Container";
 
 const links = [
   { href: "/", label: "Home" },

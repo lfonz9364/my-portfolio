@@ -1,5 +1,5 @@
+import { Button } from "@/components/atoms/Button";
 import { HeroIntroProps } from "@/types/componentsCustomProps";
-import { Button } from "../atoms/Button";
 
 export const HeroIntro = ({ title, subtitle }: HeroIntroProps) => (
   <section className="py-20 md:py-28">

@@ -1,4 +1,4 @@
-import { Container } from "../atoms/Container";
+import { Container } from "@/components/atoms/Container";
 
 export const Footer = () => (
   <footer className="border-t border-slate-200 py-8">

@@ -1,10 +1,10 @@
 "use client";
 
+import { SectionHeading } from "@/components/atoms/SectionHeading";
+import { ProjectCard } from "@/components/molecules/ProjectCard";
+import { SkillFilter } from "@/components/molecules/SkillFilter";
 import { Project } from "@/types/contenful";
 import { useMemo, useState } from "react";
-import { SectionHeading } from "../atoms/SectionHeading";
-import { ProjectCard } from "../molecules/ProjectCard";
-import { SkillFilter } from "../molecules/SkillFilter";
 
 export const ProjectsGrid = ({ projects }: { projects: Project[] }) => {
   const [selectedSkill, setSelectedSkill] = useState("All");
