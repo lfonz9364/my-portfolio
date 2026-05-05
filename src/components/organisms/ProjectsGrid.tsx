@@ -4,6 +4,7 @@ import { SectionHeading } from "@/components/atoms/SectionHeading";
 import { ProjectCard } from "@/components/molecules/ProjectCard";
 import { SkillFilter } from "@/components/molecules/SkillFilter";
 import { Project } from "@/types/contenful";
+import { Box, SimpleGrid } from "@chakra-ui/react";
 import { useMemo, useState } from "react";
 
 export const ProjectsGrid = ({ projects }: { projects: Project[] }) => {
@@ -29,7 +30,12 @@ export const ProjectsGrid = ({ projects }: { projects: Project[] }) => {
   }, [projects, selectedSkill]);
 
   return (
-    <section className="py-16">
+    <Box
+      as="section"
+      py={{ base: 12, md: 20 }}
+      borderTopWidth="1px"
+      borderColor="gray.200"
+    >
       <SectionHeading
         eyebrow="Portfolio"
         title="Projects"
@@ -42,11 +48,11 @@ export const ProjectsGrid = ({ projects }: { projects: Project[] }) => {
         onSelectSkill={setSelectedSkill}
       />
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={6}>
         {filteredProjects.map((project) => (
           <ProjectCard key={project.sys.id} project={project} />
         ))}
-      </div>
-    </section>
+      </SimpleGrid>
+    </Box>
   );
 };
