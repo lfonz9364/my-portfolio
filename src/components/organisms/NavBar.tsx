@@ -1,11 +1,5 @@
-import {
-  Box,
-  Link as ChakraLink,
-  Container,
-  Flex,
-  HStack,
-} from "@chakra-ui/react";
-import NextLink from "next/link";
+import { Box, Container, Flex, HStack } from "@chakra-ui/react";
+import { Link } from "../atoms/Link";
 
 const links = [
   { href: "/", label: "Home" },
@@ -28,22 +22,27 @@ export const NavBar = () => (
   >
     <Container>
       <Flex h="16" align="center" justify="space-between">
-        <ChakraLink asChild fontWeight="bold" color="gray.900">
-          <NextLink href="/">Fonzie</NextLink>
-        </ChakraLink>
+        <Link
+          href="/"
+          chakraLinkProps={{ fontWeight: "bold", color: "gray.900" }}
+        >
+          Fonzie
+        </Link>
 
         <HStack gap={6} display={{ base: "none", md: "flex" }}>
           {links.map((link) => (
-            <ChakraLink
-              asChild
+            <Link
+              href={link.href}
               key={link.href}
-              color="gray.600"
-              fontSize="sm"
-              fontWeight="medium"
-              _hover={{ color: "green.600", textDecoration: "none" }}
+              chakraLinkProps={{
+                color: "gray.600",
+                fontSize: "sm",
+                fontWeight: "medium",
+                _hover: { color: "green.600", textDecoration: "none" },
+              }}
             >
-              <NextLink href={link.href}>{link.label}</NextLink>
-            </ChakraLink>
+              {link.label}
+            </Link>
           ))}
         </HStack>
       </Flex>

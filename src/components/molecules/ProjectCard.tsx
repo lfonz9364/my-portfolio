@@ -1,14 +1,7 @@
 import { Badge } from "@/components/atoms/Badge";
 import { Project, Skill } from "@/types/contenful";
-import {
-  Card,
-  Link as ChakraLink,
-  HStack,
-  Stack,
-  Text,
-  Wrap,
-} from "@chakra-ui/react";
-import NextLink from "next/link";
+import { Card, HStack, Stack, Text, Wrap } from "@chakra-ui/react";
+import { Link } from "../atoms/Link";
 
 export const ProjectCard = ({ project }: { project: Project }) => {
   const {
@@ -56,20 +49,29 @@ export const ProjectCard = ({ project }: { project: Project }) => {
           </Wrap>
 
           <HStack gap={4} pt={2}>
-            <ChakraLink asChild color="green.600" fontWeight="semibold">
-              <NextLink href={`/projects/${slug}`}>Case Study →</NextLink>
-            </ChakraLink>
+            <Link
+              href={`/projects/${slug}`}
+              chakraLinkProps={{ color: "green.600", fontWeight: "semibold" }}
+            >
+              Case Study →
+            </Link>
 
             {githubUrl && (
-              <ChakraLink asChild color="gray.600" fontWeight="semibold">
-                <NextLink href={githubUrl}>GitHub</NextLink>
-              </ChakraLink>
+              <Link
+                href={githubUrl}
+                chakraLinkProps={{ color: "gray.600", fontWeight: "semibold" }}
+              >
+                GitHub
+              </Link>
             )}
 
             {liveUrl && (
-              <ChakraLink asChild color="gray.600" fontWeight="semibold">
-                <NextLink href={liveUrl}>Live site</NextLink>
-              </ChakraLink>
+              <Link
+                href={liveUrl}
+                chakraLinkProps={{ color: "gray.600", fontWeight: "semibold" }}
+              >
+                Live site
+              </Link>
             )}
           </HStack>
         </Stack>
