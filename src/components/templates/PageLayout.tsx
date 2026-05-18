@@ -7,7 +7,7 @@ export const PageLayout = ({ children }: { children: React.ReactNode }) => (
   <Box bg="gray.50" color="gray.900" minH="100vh">
     <NavBar />
 
-    <Container>{children}</Container>
+    <Container py={{ base: 8, md: 12 }}>{children}</Container>
 
     <Footer />
   </Box>

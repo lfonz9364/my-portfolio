@@ -26,7 +26,7 @@ export const NavBar = () => (
     borderColor="gray.200"
     backdropFilter="blur(10px)"
   >
-    <Container maxW="6xl" px={{ base: 4, md: 6 }}>
+    <Container>
       <Flex h="16" align="center" justify="space-between">
         <ChakraLink asChild fontWeight="bold" color="gray.900">
           <NextLink href="/">Fonzie</NextLink>
