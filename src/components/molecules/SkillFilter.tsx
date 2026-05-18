@@ -1,5 +1,6 @@
 import { SkillFilterProps } from "@/types/componentsCustomProps";
-import { Button, HStack } from "@chakra-ui/react";
+import { HStack } from "@chakra-ui/react";
+import { Button } from "../atoms/Button";
 
 export const SkillFilter = ({
   skills,
@@ -14,7 +15,6 @@ export const SkillFilter = ({
         <Button
           key={skill}
           size="sm"
-          rounded="full"
           colorPalette="green"
           variant={selectedSkill === skill ? "solid" : "outline"}
           onClick={() => onSelectSkill(skill)}
