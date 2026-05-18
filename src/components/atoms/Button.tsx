@@ -1,17 +1,9 @@
-import { ButtonProps } from "@/types/componentsCustomProps";
-import { Button as ChakraButton, Link as ChakraLink } from "@chakra-ui/react";
-import NextLink from "next/link";
+import { ButtonProps, Button as ChakraButton } from "@chakra-ui/react";
 
-export const Button = ({ href, children, ...restProps }: ButtonProps) => {
-  if (!href) {
-    return <ChakraButton {...restProps}>{children}</ChakraButton>;
-  }
-
+export const Button = ({ children, ...restProps }: ButtonProps) => {
   return (
-    <ChakraLink asChild>
-      <NextLink href={href}>
-        <ChakraButton {...restProps}>{children}</ChakraButton>
-      </NextLink>
-    </ChakraLink>
+    <ChakraButton rounded="full" {...restProps}>
+      {children}
+    </ChakraButton>
   );
 };
