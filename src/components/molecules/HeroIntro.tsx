@@ -1,6 +1,6 @@
 import { Badge } from "@/components/atoms/Badge";
-import { Button } from "@/components/atoms/Button";
 import { Box, Heading, HStack, Stack, Text, Wrap } from "@chakra-ui/react";
+import { GoToButton } from "./GoToButton";
 
 const skills = [
   "React",
@@ -9,6 +9,10 @@ const skills = [
   "React Native",
   "Node.js",
   "Contentful",
+  "Ruby on Rails",
+  "Ruby",
+  "Flutter",
+  "Dart",
 ];
 
 export const HeroIntro = () => (
@@ -39,13 +43,13 @@ export const HeroIntro = () => (
       </Text>
 
       <HStack gap={4} flexWrap="wrap">
-        <Button href="/projects" colorPalette="green" rounded="full">
+        <GoToButton href="/projects" buttonProps={{ colorPalette: "green" }}>
           View Projects
-        </Button>
+        </GoToButton>
 
-        <Button href="/contact" variant="outline" rounded="full">
-          Contact Me
-        </Button>
+        <GoToButton href="/contact" buttonProps={{ variant: "outline" }}>
+          View Projects
+        </GoToButton>
       </HStack>
 
       <Wrap gap={3} pt={4}>

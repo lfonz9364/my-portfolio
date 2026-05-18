@@ -1,7 +1,7 @@
-import { Button } from "@/components/atoms/Button";
 import { SectionHeading } from "@/components/atoms/SectionHeading";
 import { Box, Card, HStack, Stack, Text } from "@chakra-ui/react";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import { GoToButton } from "../molecules/GoToButton";
 
 export const ContactSection = () => (
   <Box
@@ -25,23 +25,30 @@ export const ContactSection = () => (
           </Text>
 
           <HStack gap={4} flexWrap="wrap">
-            <Button
+            <GoToButton
               href="mailto:your-email@example.com"
-              variant="solid"
-              colorPalette="red"
+              buttonProps={{
+                variant: "solid",
+                colorPalette: "red",
+              }}
             >
               <FaEnvelope /> Email Me
-            </Button>
-            <Button
-              href={process.env.LINKEDIN_LINK}
-              variant="solid"
-              colorPalette="blue"
+            </GoToButton>
+            <GoToButton
+              href={process.env.LINKEDIN_LINK || ""}
+              buttonProps={{
+                variant: "solid",
+                colorPalette: "blue",
+              }}
             >
               <FaLinkedin /> LinkedIn
-            </Button>
-            <Button href={process.env.GITHUB_LINK} variant="subtle">
+            </GoToButton>
+            <GoToButton
+              href={process.env.GITHUB_LINK || ""}
+              buttonProps={{ variant: "subtle" }}
+            >
               <FaGithub /> Github
-            </Button>
+            </GoToButton>
           </HStack>
         </Stack>
       </Card.Body>

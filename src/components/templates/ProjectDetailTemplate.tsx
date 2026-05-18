@@ -1,7 +1,7 @@
 import { Badge } from "@/components/atoms/Badge";
-import { Button } from "@/components/atoms/Button";
 import { Project } from "@/types/contenful";
 import Link from "next/link";
+import { GoToButton } from "../molecules/GoToButton";
 
 export const ProjectDetailTemplate = ({ project }: { project: Project }) => {
   const {
@@ -34,16 +34,12 @@ export const ProjectDetailTemplate = ({ project }: { project: Project }) => {
         </div>
 
         <div className="mt-8 flex flex-wrap gap-4">
-          {liveUrl && (
-            <Button href={liveUrl} external>
-              View Live
-            </Button>
-          )}
+          {liveUrl && <GoToButton href={liveUrl}>View Live</GoToButton>}
 
           {githubUrl && (
-            <Button href={githubUrl} variant="secondary" external>
+            <GoToButton href={githubUrl} buttonProps={{ variant: "outline" }}>
               View GitHub
-            </Button>
+            </GoToButton>
           )}
         </div>
       </div>
