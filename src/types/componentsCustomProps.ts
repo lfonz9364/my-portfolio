@@ -1,5 +1,6 @@
 import {
   BadgeProps as ChakraBadgeProps,
+  ButtonProps as ChakraButtonProps,
   LinkProps as ChakraLinkProps,
 } from "@chakra-ui/react";
 import { LinkProps as NextLinkProps } from "next/link";
@@ -8,6 +9,10 @@ import { Experience, Project } from "./contenful";
 
 export type BadgeProps = ChakraBadgeProps & {
   children: string;
+};
+
+export type ButtonProps = ChakraButtonProps & {
+  children: ReactNode;
 };
 
 export type SectionHeadingProps = {
@@ -37,4 +42,10 @@ export type LinkProps = {
   href: string;
   chakraLinkProps?: ChakraLinkProps;
   nextLinkProps?: NextLinkProps;
+};
+
+export type GoToButtonProps = {
+  href: string;
+  children: ReactNode;
+  buttonProps?: ChakraButtonProps;
 };
