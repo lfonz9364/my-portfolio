@@ -1,32 +1,36 @@
 import { SectionHeading } from "@/components/atoms/SectionHeading";
+import { ContactSectionProps } from "@/types/componentsCustomProps";
 import { Box, Card, HStack, Stack, Text } from "@chakra-ui/react";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import { GoToButton } from "../molecules/GoToButton";
 
-export const ContactSection = () => (
+export const ContactSection = ({
+  heading,
+  title,
+  description,
+  email,
+  linkedInUrl,
+  githubUrl,
+}: ContactSectionProps) => (
   <Box
     as="section"
     py={{ base: 8, md: 8 }}
     borderTopWidth="1px"
     borderColor="gray.200"
   >
-    <SectionHeading
-      eyebrow="Contact"
-      title="Let’s work together"
-      description="I’m open to frontend, full-stack, and mobile engineering opportunities."
-    />
+    <SectionHeading eyebrow={heading} title={title} description={description} />
 
     <Card.Root bg="white" borderColor="gray.200" rounded="2xl" shadow="sm">
       <Card.Body>
         <Stack gap={6}>
           <Text color="gray.600" maxW="2xl" lineHeight="1.8">
-            Feel free to reach out if you’re hiring, collaborating, or want to
-            chat about a project.
+            {description}
           </Text>
 
           <HStack gap={4} flexWrap="wrap">
             <GoToButton
-              href={`mailto:${process.env.EMAIL_ADDRESS}` || ""}
+              href={email}
+              externalLink
               buttonProps={{
                 variant: "solid",
                 colorPalette: "red",
@@ -34,8 +38,10 @@ export const ContactSection = () => (
             >
               <FaEnvelope /> Email Me
             </GoToButton>
+
             <GoToButton
-              href={process.env.LINKEDIN_LINK || ""}
+              href={linkedInUrl}
+              externalLink
               buttonProps={{
                 variant: "solid",
                 colorPalette: "blue",
@@ -43,8 +49,10 @@ export const ContactSection = () => (
             >
               <FaLinkedin /> LinkedIn
             </GoToButton>
+
             <GoToButton
-              href={process.env.GITHUB_LINK || ""}
+              href={githubUrl}
+              externalLink
               buttonProps={{ variant: "subtle" }}
             >
               <FaGithub /> Github

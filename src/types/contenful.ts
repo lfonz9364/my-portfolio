@@ -46,6 +46,18 @@ export type HeroSection = {
   };
 };
 
+export type ContactSection = {
+  sys: { id: string };
+  fields: {
+    heading: string;
+    title: string;
+    description: string;
+    email: string;
+    linkedInUrl: string;
+    githubUrl: string;
+  };
+};
+
 export type SkillSkeleton = EntrySkeletonType<
   {
     name: EntryFieldTypes.Text;
@@ -90,6 +102,18 @@ export type HeroSkeleton = EntrySkeletonType<
   "heroSection"
 >;
 
+export type ContactSectionSkeleton = EntrySkeletonType<
+  {
+    heading: EntryFieldTypes.Symbol;
+    title: EntryFieldTypes.Symbol;
+    description: EntryFieldTypes.Text;
+    email: EntryFieldTypes.Symbol;
+    linkedinUrl: EntryFieldTypes.Symbol;
+    githubUrl: EntryFieldTypes.Symbol;
+  },
+  "contactSection"
+>;
+
 export type SkillEntry = Entry<SkillSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">;
 export type ProjectEntry = Entry<ProjectSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">;
 export type ExperienceEntry = Entry<
@@ -97,3 +121,7 @@ export type ExperienceEntry = Entry<
   "WITHOUT_UNRESOLVABLE_LINKS"
 >;
 export type HeroEntry = Entry<HeroSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">;
+export type ContactSectionEntry = Entry<
+  ContactSectionSkeleton,
+  "WITHOUT_UNRESOLVABLE_LINKS"
+>;

@@ -1,4 +1,7 @@
 import {
+  ContactSection,
+  ContactSectionEntry,
+  ContactSectionSkeleton,
   Experience,
   ExperienceEntry,
   ExperienceSkeleton,
@@ -72,6 +75,20 @@ const mapHeroSection = (entry: HeroEntry): HeroSection => ({
   },
 });
 
+const mapContactSection = (entry: ContactSectionEntry): ContactSection => ({
+  sys: {
+    id: entry.sys.id,
+  },
+  fields: {
+    heading: entry.fields.heading,
+    title: entry.fields.title,
+    description: entry.fields.description,
+    email: entry.fields.email,
+    linkedInUrl: entry.fields.linkedinUrl,
+    githubUrl: entry.fields.githubUrl,
+  },
+});
+
 export const getProjects = async (preview = false): Promise<Project[]> => {
   const entries = await getClient(
     preview,
@@ -122,4 +139,18 @@ export const getHeroSection = async (
   });
 
   return entries.items[0] ? mapHeroSection(entries.items[0]) : null;
+};
+
+export const getContactSection = async (): Promise<ContactSection | null> => {
+  const response =
+    await contentfulClient.withoutUnresolvableLinks.getEntries<ContactSectionSkeleton>(
+      {
+        content_type: "contactSection",
+        limit: 1,
+      },
+    );
+
+  const entry = response.items[0];
+
+  return entry ? mapContactSection(entry) : null;
 };
