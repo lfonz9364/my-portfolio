@@ -34,10 +34,18 @@ export const ProjectDetailTemplate = ({ project }: { project: Project }) => {
         </div>
 
         <div className="mt-8 flex flex-wrap gap-4">
-          {liveUrl && <GoToButton href={liveUrl}>View Live</GoToButton>}
+          {liveUrl && (
+            <GoToButton href={liveUrl} externalLink>
+              View Live
+            </GoToButton>
+          )}
 
           {githubUrl && (
-            <GoToButton href={githubUrl} buttonProps={{ variant: "outline" }}>
+            <GoToButton
+              href={githubUrl}
+              externalLink
+              buttonProps={{ variant: "outline" }}
+            >
               View GitHub
             </GoToButton>
           )}
