@@ -7,7 +7,7 @@ export const ExperienceTimeline = ({
 }: {
   experiences: Experience[];
 }) => (
-  <section className="py-16">
+  <section className="py-16 border-t border-slate-200">
     <SectionHeading
       eyebrow="Experience"
       title="Work Experience"

@@ -13,7 +13,7 @@ const skills = [
 ];
 
 export const AboutTemplate = () => (
-  <section className="py-16">
+  <section className="py-16 border-t border-slate-200">
     <SectionHeading
       eyebrow="About"
       title="Frontend engineer focused on practical, user-friendly products"
