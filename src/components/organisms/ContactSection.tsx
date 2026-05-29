@@ -26,7 +26,7 @@ export const ContactSection = () => (
 
           <HStack gap={4} flexWrap="wrap">
             <GoToButton
-              href="mailto:your-email@example.com"
+              href={`mailto:${process.env.EMAIL_ADDRESS}` || ""}
               buttonProps={{
                 variant: "solid",
                 colorPalette: "red",
