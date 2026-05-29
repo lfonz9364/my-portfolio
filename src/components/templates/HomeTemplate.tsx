@@ -4,15 +4,15 @@ import { ExperienceTimeline } from "@/components/organisms/ExperienceTimeline";
 import { ProjectsGrid } from "@/components/organisms/ProjectsGrid";
 import { HomeTemplateProps } from "@/types/componentsCustomProps";
 
-export const HomeTemplate = ({ projects, experiences }: HomeTemplateProps) => (
+export const HomeTemplate = ({
+  projects,
+  experiences,
+  contact,
+}: HomeTemplateProps) => (
   <>
-    <HeroIntro
-      title="Hi, I’m Fonzie. I build modern web and mobile applications."
-      subtitle="Frontend engineer with experience across React, Next.js, TypeScript, React Native, Node.js, and CMS-driven products."
-    />
-
+    <HeroIntro />
     <ProjectsGrid projects={projects.slice(0, 3)} />
     <ExperienceTimeline experiences={experiences.slice(0, 3)} />
-    <ContactSection />
+    {contact && <ContactSection {...contact.fields} />}
   </>
 );
