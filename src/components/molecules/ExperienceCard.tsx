@@ -1,5 +1,6 @@
 import { Badge } from "@/components/atoms/Badge";
 import { Experience } from "@/types/contenful";
+import { Box, HStack, Heading, Text } from "@chakra-ui/react";
 
 export const ExperienceCard = ({ experience }: { experience: Experience }) => {
   const {
@@ -7,24 +8,37 @@ export const ExperienceCard = ({ experience }: { experience: Experience }) => {
     fields: { startDate, endDate, role, company, summary },
   } = experience;
   return (
-    <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-      <p className="text-sm font-medium text-emerald-700">
+    <Box
+      border="1px"
+      borderColor="grey.200"
+      bgColor="white"
+      p={6}
+      shadow="sm"
+      rounded="2xl"
+    >
+      <Text fontSize="sm" fontWeight="medium" color="green.700">
         {startDate} — {endDate ?? "Present"}
-      </p>
+      </Text>
 
-      <h3 className="mt-2 text-xl font-bold text-slate-950">{role}</h3>
+      <Heading size="xl" mt={2} fontWeight="bold" color="grey.950">
+        {role}
+      </Heading>
 
-      <p className="mt-1 font-medium text-slate-700">{company}</p>
+      <Text mt={1} fontWeight="medium" color="grey.700">
+        {company}
+      </Text>
 
-      <p className="mt-4 text-sm leading-6 text-slate-600">{summary}</p>
+      <Text mt={4} fontSize="sm" color="green.700" lineHeight="1.6">
+        {summary}
+      </Text>
 
-      <div className="mt-5 flex flex-wrap gap-2">
+      <HStack className="mt-5 flex flex-wrap gap-2">
         {experience.fields.skills?.map((skill, index) => (
           <Badge key={`${id}-${skill.fields.name}-${index}`}>
             {skill.fields.name}
           </Badge>
         ))}
-      </div>
-    </article>
+      </HStack>
+    </Box>
   );
 };
