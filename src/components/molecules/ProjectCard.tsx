@@ -59,6 +59,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
             {githubUrl && (
               <Link
                 href={githubUrl}
+                external
                 chakraLinkProps={{ color: "gray.600", fontWeight: "semibold" }}
               >
                 GitHub
@@ -68,6 +69,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
             {liveUrl && (
               <Link
                 href={liveUrl}
+                external
                 chakraLinkProps={{ color: "gray.600", fontWeight: "semibold" }}
               >
                 Live site
