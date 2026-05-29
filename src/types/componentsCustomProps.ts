@@ -54,10 +54,5 @@ export type GoToButtonProps = {
 };
 
 export type ContactSectionProps = {
-  heading: string;
-  title: string;
-  description: string;
-  email: string;
-  linkedInUrl: string;
-  githubUrl: string;
+  contact: ContactSection;
 };

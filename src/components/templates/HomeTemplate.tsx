@@ -13,6 +13,6 @@ export const HomeTemplate = ({
     <HeroIntro />
     <ProjectsGrid projects={projects.slice(0, 3)} />
     <ExperienceTimeline experiences={experiences.slice(0, 3)} />
-    {contact && <ContactSection {...contact.fields} />}
+    {contact && <ContactSection contact={contact} />}
   </>
 );

@@ -4,62 +4,64 @@ import { Box, Card, HStack, Stack, Text } from "@chakra-ui/react";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import { GoToButton } from "../molecules/GoToButton";
 
-export const ContactSection = ({
-  heading,
-  title,
-  description,
-  email,
-  linkedInUrl,
-  githubUrl,
-}: ContactSectionProps) => (
-  <Box
-    as="section"
-    py={{ base: 8, md: 8 }}
-    borderTopWidth="1px"
-    borderColor="gray.200"
-  >
-    <SectionHeading eyebrow={heading} title={title} description={description} />
+export const ContactSection = ({ contact }: ContactSectionProps) => {
+  const { heading, title, description, email, linkedInUrl, githubUrl } =
+    contact.fields;
 
-    <Card.Root bg="white" borderColor="gray.200" rounded="2xl" shadow="sm">
-      <Card.Body>
-        <Stack gap={6}>
-          <Text color="gray.600" maxW="2xl" lineHeight="1.8">
-            {description}
-          </Text>
+  return (
+    <Box
+      as="section"
+      py={{ base: 8, md: 8 }}
+      borderTopWidth="1px"
+      borderColor="gray.200"
+    >
+      <SectionHeading
+        eyebrow={heading}
+        title={title}
+        description={description}
+      />
 
-          <HStack gap={4} flexWrap="wrap">
-            <GoToButton
-              href={email}
-              externalLink
-              buttonProps={{
-                variant: "solid",
-                colorPalette: "red",
-              }}
-            >
-              <FaEnvelope /> Email Me
-            </GoToButton>
+      <Card.Root bg="white" borderColor="gray.200" rounded="2xl" shadow="sm">
+        <Card.Body>
+          <Stack gap={6}>
+            <Text color="gray.600" maxW="2xl" lineHeight="1.8">
+              {description}
+            </Text>
 
-            <GoToButton
-              href={linkedInUrl}
-              externalLink
-              buttonProps={{
-                variant: "solid",
-                colorPalette: "blue",
-              }}
-            >
-              <FaLinkedin /> LinkedIn
-            </GoToButton>
+            <HStack gap={4} flexWrap="wrap">
+              <GoToButton
+                href={`mailto:${email}`}
+                externalLink
+                buttonProps={{
+                  variant: "solid",
+                  colorPalette: "red",
+                }}
+              >
+                <FaEnvelope /> Email Me
+              </GoToButton>
 
-            <GoToButton
-              href={githubUrl}
-              externalLink
-              buttonProps={{ variant: "subtle" }}
-            >
-              <FaGithub /> Github
-            </GoToButton>
-          </HStack>
-        </Stack>
-      </Card.Body>
-    </Card.Root>
-  </Box>
-);
+              <GoToButton
+                href={linkedInUrl}
+                externalLink
+                buttonProps={{
+                  variant: "solid",
+                  colorPalette: "blue",
+                }}
+              >
+                <FaLinkedin /> LinkedIn
+              </GoToButton>
+
+              <GoToButton
+                href={githubUrl}
+                externalLink
+                buttonProps={{ variant: "subtle" }}
+              >
+                <FaGithub /> Github
+              </GoToButton>
+            </HStack>
+          </Stack>
+        </Card.Body>
+      </Card.Root>
+    </Box>
+  );
+};
