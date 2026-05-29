@@ -42,6 +42,7 @@ export type LinkProps = {
   href: string;
   chakraLinkProps?: ChakraLinkProps;
   nextLinkProps?: NextLinkProps;
+  external?: boolean;
 };
 
 export type GoToButtonProps = {
