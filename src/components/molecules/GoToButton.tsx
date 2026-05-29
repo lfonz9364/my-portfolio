@@ -6,8 +6,9 @@ export const GoToButton = ({
   href,
   children,
   buttonProps,
+  externalLink,
 }: GoToButtonProps) => (
-  <Link href={href}>
+  <Link href={href} external={externalLink}>
     <Button {...buttonProps}>{children}</Button>
   </Link>
 );
