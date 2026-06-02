@@ -108,10 +108,10 @@ export type ContactSectionSkeleton = EntrySkeletonType<
     title: EntryFieldTypes.Symbol;
     description: EntryFieldTypes.Text;
     email: EntryFieldTypes.Symbol;
-    linkedinUrl: EntryFieldTypes.Symbol;
+    linkedInUrl: EntryFieldTypes.Symbol;
     githubUrl: EntryFieldTypes.Symbol;
   },
-  "contactSection"
+  "contactChannels"
 >;
 
 export type SkillEntry = Entry<SkillSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">;

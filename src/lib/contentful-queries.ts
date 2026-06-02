@@ -84,7 +84,7 @@ const mapContactSection = (entry: ContactSectionEntry): ContactSection => ({
     title: entry.fields.title,
     description: entry.fields.description,
     email: entry.fields.email,
-    linkedInUrl: entry.fields.linkedinUrl,
+    linkedInUrl: entry.fields.linkedInUrl,
     githubUrl: entry.fields.githubUrl,
   },
 });
@@ -145,7 +145,7 @@ export const getContactSection = async (): Promise<ContactSection | null> => {
   const response =
     await contentfulClient.withoutUnresolvableLinks.getEntries<ContactSectionSkeleton>(
       {
-        content_type: "contactSection",
+        content_type: "contactChannels",
         limit: 1,
       },
     );
