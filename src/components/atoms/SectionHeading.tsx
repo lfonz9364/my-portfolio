@@ -13,13 +13,20 @@ export const SectionHeading = ({
         fontSize="sm"
         fontWeight="semibold"
         textTransform="uppercase"
+        letterSpacing="wide"
       >
         {eyebrow}
       </Text>
     )}
 
-    <Heading color="brand.700">{title}</Heading>
+    <Heading as="h1" fontSize="3xl" color="brand.700">
+      {title}
+    </Heading>
 
-    {description && <Text color="gray.600">{description}</Text>}
+    {description && (
+      <Text color="gray.600" fontSize="xl">
+        {description}
+      </Text>
+    )}
   </Stack>
 );
