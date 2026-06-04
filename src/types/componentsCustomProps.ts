@@ -56,3 +56,10 @@ export type GoToButtonProps = {
 export type ContactSectionProps = {
   contact: ContactSection;
 };
+
+export type SectionProps = {
+  children: ReactNode;
+  name: string;
+  title: string;
+  desc: string;
+};

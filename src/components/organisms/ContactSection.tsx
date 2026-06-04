@@ -1,26 +1,15 @@
-import { SectionHeading } from "@/components/atoms/SectionHeading";
 import { ContactSectionProps } from "@/types/componentsCustomProps";
-import { Box, Card, HStack, Stack, Text } from "@chakra-ui/react";
+import { Card, HStack, Stack, Text } from "@chakra-ui/react";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import { GoToButton } from "../molecules/GoToButton";
+import { Section } from "../molecules/Section";
 
 export const ContactSection = ({ contact }: ContactSectionProps) => {
   const { heading, title, description, email, linkedInUrl, githubUrl } =
     contact.fields;
 
   return (
-    <Box
-      as="section"
-      py={{ base: 8, md: 8 }}
-      borderTopWidth="1px"
-      borderColor="gray.200"
-    >
-      <SectionHeading
-        eyebrow={heading}
-        title={title}
-        description={description}
-      />
-
+    <Section name={heading} title={title} desc={description}>
       <Card.Root bg="white" borderColor="gray.200" rounded="2xl" shadow="sm">
         <Card.Body>
           <Stack gap={6}>
@@ -62,6 +51,6 @@ export const ContactSection = ({ contact }: ContactSectionProps) => {
           </Stack>
         </Card.Body>
       </Card.Root>
-    </Box>
+    </Section>
   );
 };

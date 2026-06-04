@@ -1,11 +1,11 @@
 "use client";
 
-import { SectionHeading } from "@/components/atoms/SectionHeading";
 import { ProjectCard } from "@/components/molecules/ProjectCard";
 import { SkillFilter } from "@/components/molecules/SkillFilter";
 import { Project } from "@/types/contenful";
-import { Box, SimpleGrid } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 import { useMemo, useState } from "react";
+import { Section } from "../molecules/Section";
 
 export const ProjectsGrid = ({ projects }: { projects: Project[] }) => {
   const [selectedSkill, setSelectedSkill] = useState("All");
@@ -30,18 +30,11 @@ export const ProjectsGrid = ({ projects }: { projects: Project[] }) => {
   }, [projects, selectedSkill]);
 
   return (
-    <Box
-      as="section"
-      py={{ base: 12, md: 20 }}
-      borderTopWidth="1px"
-      borderColor="gray.200"
+    <Section
+      name="Portfolio"
+      title="Projects"
+      desc="Filter my projects by the skills you are looking for."
     >
-      <SectionHeading
-        eyebrow="Portfolio"
-        title="Projects"
-        description="Filter my projects by the skills you are looking for."
-      />
-
       <SkillFilter
         skills={skills}
         selectedSkill={selectedSkill}
@@ -53,6 +46,6 @@ export const ProjectsGrid = ({ projects }: { projects: Project[] }) => {
           <ProjectCard key={project.sys.id} project={project} />
         ))}
       </SimpleGrid>
-    </Box>
+    </Section>
   );
 };

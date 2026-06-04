@@ -1,6 +1,7 @@
 import { Badge } from "@/components/atoms/Badge";
-import { Box, Heading, HStack, Stack, Text, Wrap } from "@chakra-ui/react";
+import { HStack, Wrap } from "@chakra-ui/react";
 import { GoToButton } from "./GoToButton";
+import { Section } from "./Section";
 
 const skills = [
   "React",
@@ -16,50 +17,29 @@ const skills = [
 ];
 
 export const HeroIntro = () => (
-  <Box as="section" py={{ base: 16, md: 24 }}>
-    <Stack gap={6} maxW="4xl">
-      <Text
-        color="brand.500"
-        fontSize="sm"
-        fontWeight="semibold"
-        textTransform="uppercase"
-        letterSpacing="wide"
+  <Section
+    name="Frontend Engineer • Melbourne"
+    title="Building scalable web & mobile products with real-world impact"
+    desc="7+ years experience across React, Next.js, TypeScript, and React Native.
+        Focused on performance, clean architecture, and user experience."
+  >
+    <HStack gap={4} flexWrap="wrap">
+      <GoToButton href="/projects" buttonProps={{ colorPalette: "brand" }}>
+        View Projects
+      </GoToButton>
+
+      <GoToButton
+        href="/contact"
+        buttonProps={{ variant: "outline", colorPalette: "brand" }}
       >
-        Frontend Engineer • Melbourne
-      </Text>
+        Contact Me
+      </GoToButton>
+    </HStack>
 
-      <Heading
-        as="h1"
-        size={{ base: "4xl", md: "6xl" }}
-        lineHeight="1.05"
-        color="brand.700"
-      >
-        Building scalable web & mobile products with real-world impact.
-      </Heading>
-
-      <Text maxW="2xl" fontSize={{ base: "md", md: "lg" }} color="gray.600">
-        7+ years experience across React, Next.js, TypeScript, and React Native.
-        Focused on performance, clean architecture, and user experience.
-      </Text>
-
-      <HStack gap={4} flexWrap="wrap">
-        <GoToButton href="/projects" buttonProps={{ colorPalette: "brand" }}>
-          View Projects
-        </GoToButton>
-
-        <GoToButton
-          href="/contact"
-          buttonProps={{ variant: "outline", colorPalette: "brand" }}
-        >
-          Contact Me
-        </GoToButton>
-      </HStack>
-
-      <Wrap gap={3} pt={4}>
-        {skills.map((skill) => (
-          <Badge key={skill}>{skill}</Badge>
-        ))}
-      </Wrap>
-    </Stack>
-  </Box>
+    <Wrap gap={3} pt={4}>
+      {skills.map((skill) => (
+        <Badge key={skill}>{skill}</Badge>
+      ))}
+    </Wrap>
+  </Section>
 );
