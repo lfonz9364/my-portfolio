@@ -1,11 +1,18 @@
 import { Container } from "@/components/atoms/Container";
+import { Box, Text } from "@chakra-ui/react";
 
 export const Footer = () => (
-  <footer className="border-t border-slate-200 py-8">
+  <Box
+    as="footer"
+    py={8}
+    borderTopWidth="1px"
+    borderColor="gray.200"
+    backdropFilter="blur(10px)"
+  >
     <Container>
-      <p className="text-sm text-slate-500">
+      <Text color="gray.500" fontSize="sm">
         © {new Date().getFullYear()} Fonzie. Built with Next.js and Contentful.
-      </p>
+      </Text>
     </Container>
-  </footer>
+  </Box>
 );
