@@ -9,14 +9,16 @@ export const Link = ({
   nextLinkProps,
   external,
 }: LinkProps) => (
-  <ChakraLink
-    asChild
-    {...chakraLinkProps}
-    target={external ? "_blank" : undefined}
-    rel={external ? "noreferrer" : undefined}
-  >
-    <NextLink href={href} {...nextLinkProps}>
-      {children}
-    </NextLink>
-  </ChakraLink>
+  <>
+    <ChakraLink
+      asChild
+      {...chakraLinkProps}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noreferrer" : undefined}
+    >
+      <NextLink href={href} {...nextLinkProps}>
+        {children}
+      </NextLink>
+    </ChakraLink>
+  </>
 );
