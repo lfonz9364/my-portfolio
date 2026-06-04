@@ -14,7 +14,13 @@ export const Section = ({
     : {};
 
   return (
-    <Box as="section" py={{ base: 8, md: 16 }} {...haveBorder}>
+    <Box
+      as="section"
+      id={name}
+      py={{ base: 8, md: 16 }}
+      scrollMarginTop="120px"
+      {...haveBorder}
+    >
       <SectionHeading eyebrow={name} title={title} description={desc} />
 
       {children}
