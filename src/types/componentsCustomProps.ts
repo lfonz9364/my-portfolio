@@ -62,4 +62,5 @@ export type SectionProps = {
   name: string;
   title: string;
   desc: string;
+  haveNoTopBorder?: boolean;
 };

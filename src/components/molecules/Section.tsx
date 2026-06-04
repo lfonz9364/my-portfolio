@@ -7,15 +7,17 @@ export const Section = ({
   title,
   desc,
   children,
-}: SectionProps) => (
-  <Box
-    as="section"
-    py={{ base: 8, md: 16 }}
-    borderTopWidth="1px"
-    borderColor="gray.200"
-  >
-    <SectionHeading eyebrow={name} title={title} description={desc} />
+  haveNoTopBorder,
+}: SectionProps) => {
+  const haveBorder = !haveNoTopBorder
+    ? { borderTopWidth: "1px", borderColor: "gray.200" }
+    : {};
 
-    {children}
-  </Box>
-);
+  return (
+    <Box as="section" py={{ base: 8, md: 16 }} {...haveBorder}>
+      <SectionHeading eyebrow={name} title={title} description={desc} />
+
+      {children}
+    </Box>
+  );
+};
