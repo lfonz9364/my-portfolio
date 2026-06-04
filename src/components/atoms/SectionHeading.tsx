@@ -9,7 +9,7 @@ export const SectionHeading = ({
   <Stack gap={3} mb={8}>
     {eyebrow && (
       <Text
-        color="green.600"
+        color="brand.500"
         fontSize="sm"
         fontWeight="semibold"
         textTransform="uppercase"
@@ -18,7 +18,7 @@ export const SectionHeading = ({
       </Text>
     )}
 
-    <Heading color="gray.900">{title}</Heading>
+    <Heading color="brand.700">{title}</Heading>
 
     {description && <Text color="gray.600">{description}</Text>}
   </Stack>

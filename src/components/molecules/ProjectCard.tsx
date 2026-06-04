@@ -29,12 +29,12 @@ export const ProjectCard = ({ project }: { project: Project }) => {
       <Card.Body>
         <Stack gap={4}>
           {featured && (
-            <Badge colorPalette="yellow" alignSelf="flex-start">
+            <Badge colorPalette="brand" alignSelf="flex-start">
               Featured
             </Badge>
           )}
 
-          <Card.Title color="gray.900">{title}</Card.Title>
+          <Card.Title color="brand.700">{title}</Card.Title>
 
           <Text color="gray.600" fontSize="sm" lineHeight="1.7">
             {shortDescription}
@@ -51,7 +51,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
           <HStack gap={4} pt={2}>
             <Link
               href={`/projects/${slug}`}
-              chakraLinkProps={{ color: "green.600", fontWeight: "semibold" }}
+              chakraLinkProps={{ fontWeight: "semibold" }}
             >
               Case Study →
             </Link>
@@ -60,7 +60,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
               <Link
                 href={githubUrl}
                 external
-                chakraLinkProps={{ color: "gray.600", fontWeight: "semibold" }}
+                chakraLinkProps={{ fontWeight: "semibold" }}
               >
                 GitHub
               </Link>
@@ -70,7 +70,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
               <Link
                 href={liveUrl}
                 external
-                chakraLinkProps={{ color: "gray.600", fontWeight: "semibold" }}
+                chakraLinkProps={{ fontWeight: "semibold" }}
               >
                 Live site
               </Link>

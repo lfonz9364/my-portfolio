@@ -54,7 +54,7 @@ export const ContactSection = ({ contact }: ContactSectionProps) => {
               <GoToButton
                 href={githubUrl}
                 externalLink
-                buttonProps={{ variant: "subtle" }}
+                buttonProps={{ variant: "subtle", colorPalette: "gray" }}
               >
                 <FaGithub /> Github
               </GoToButton>

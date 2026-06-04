@@ -15,7 +15,7 @@ export const SkillFilter = ({
         <Button
           key={skill}
           size="sm"
-          colorPalette="green"
+          colorPalette="brand"
           variant={selectedSkill === skill ? "solid" : "outline"}
           onClick={() => onSelectSkill(skill)}
         >

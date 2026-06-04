@@ -19,7 +19,7 @@ export const HeroIntro = () => (
   <Box as="section" py={{ base: 16, md: 24 }}>
     <Stack gap={6} maxW="4xl">
       <Text
-        color="green.600"
+        color="brand.500"
         fontSize="sm"
         fontWeight="semibold"
         textTransform="uppercase"
@@ -32,7 +32,7 @@ export const HeroIntro = () => (
         as="h1"
         size={{ base: "4xl", md: "6xl" }}
         lineHeight="1.05"
-        color="gray.900"
+        color="brand.700"
       >
         Building scalable web & mobile products with real-world impact.
       </Heading>
@@ -43,12 +43,15 @@ export const HeroIntro = () => (
       </Text>
 
       <HStack gap={4} flexWrap="wrap">
-        <GoToButton href="/projects" buttonProps={{ colorPalette: "green" }}>
+        <GoToButton href="/projects" buttonProps={{ colorPalette: "brand" }}>
           View Projects
         </GoToButton>
 
-        <GoToButton href="/contact" buttonProps={{ variant: "outline" }}>
-          View Projects
+        <GoToButton
+          href="/contact"
+          buttonProps={{ variant: "outline", colorPalette: "brand" }}
+        >
+          Contact Me
         </GoToButton>
       </HStack>
 

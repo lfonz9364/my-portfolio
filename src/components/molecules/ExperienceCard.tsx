@@ -16,7 +16,7 @@ export const ExperienceCard = ({ experience }: { experience: Experience }) => {
       shadow="sm"
       rounded="2xl"
     >
-      <Text fontSize="sm" fontWeight="medium" color="green.700">
+      <Text fontSize="sm" fontWeight="medium" color="brand.700">
         {startDate} — {endDate ?? "Present"}
       </Text>
 
@@ -28,7 +28,7 @@ export const ExperienceCard = ({ experience }: { experience: Experience }) => {
         {company}
       </Text>
 
-      <Text mt={4} fontSize="sm" color="green.700" lineHeight="1.6">
+      <Text mt={4} fontSize="sm" color="brand.700" lineHeight="1.6">
         {summary}
       </Text>
 

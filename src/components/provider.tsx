@@ -1,6 +1,7 @@
 "use client";
 
-import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
+import { system } from "@/app/theme";
+import { ChakraProvider } from "@chakra-ui/react";
 // https://github.com/pacocoursey/next-themes/issues/387 to resolve issue with next themes
 import { ThemeProviderProps } from "@teispace/next-themes";
 import dynamic from "next/dynamic";
@@ -15,7 +16,7 @@ const NextThemesProvider = dynamic(
 export function Provider({ children }: ThemeProviderProps) {
   return (
     <NextThemesProvider attribute="class" defaultTheme="system" enableSystem>
-      <ChakraProvider value={defaultSystem}>{children}</ChakraProvider>
+      <ChakraProvider value={system}>{children}</ChakraProvider>
     </NextThemesProvider>
   );
 }

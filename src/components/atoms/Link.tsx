@@ -12,6 +12,7 @@ export const Link = ({
   <>
     <ChakraLink
       asChild
+      colorPalette="brand"
       {...chakraLinkProps}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}

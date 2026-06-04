@@ -4,7 +4,7 @@ import { Header } from "@/components/organisms/Header";
 import { Box } from "@chakra-ui/react";
 
 export const PageLayout = ({ children }: { children: React.ReactNode }) => (
-  <Box bg="gray.50" color="gray.900" minH="100vh">
+  <Box bg="gray.50" color="brand.700" minH="100vh">
     <Header />
 
     <Container py={{ base: 8, md: 12 }}>{children}</Container>
