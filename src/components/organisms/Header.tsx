@@ -15,11 +15,7 @@ export const Header = () => (
   >
     <Container maxW="6xl" paddingInline="4">
       <Flex h="32" align="center" justify="space-between">
-        <Box
-          pos="relative"
-          w={{ base: 16, sm: 24, md: 32 }}
-          h={{ base: 16, sm: 24, md: 32 }}
-        >
+        <Box pos="relative" w={{ base: 16, sm: 24 }} h={{ base: 16, sm: 24 }}>
           <Image
             src={Icon.src}
             alt="Fonzie Logo"
