@@ -1,7 +1,7 @@
 import { Badge } from "@/components/atoms/Badge";
+import { DynamicLink } from "@/components/atoms/DynamicLink";
 import { Project, Skill } from "@/types/contenful";
 import { Card, HStack, Stack, Text, Wrap } from "@chakra-ui/react";
-import { Link } from "../atoms/Link";
 
 export const ProjectCard = ({ project }: { project: Project }) => {
   const {
@@ -49,31 +49,31 @@ export const ProjectCard = ({ project }: { project: Project }) => {
           </Wrap>
 
           <HStack gap={4} pt={2}>
-            <Link
+            <DynamicLink
               href={`/projects/${slug}`}
               chakraLinkProps={{ fontWeight: "semibold" }}
             >
               Case Study →
-            </Link>
+            </DynamicLink>
 
             {githubUrl && (
-              <Link
+              <DynamicLink
                 href={githubUrl}
                 external
                 chakraLinkProps={{ fontWeight: "semibold" }}
               >
                 GitHub
-              </Link>
+              </DynamicLink>
             )}
 
             {liveUrl && (
-              <Link
+              <DynamicLink
                 href={liveUrl}
                 external
                 chakraLinkProps={{ fontWeight: "semibold" }}
               >
                 Live site
-              </Link>
+              </DynamicLink>
             )}
           </HStack>
         </Stack>

@@ -1,6 +1,6 @@
+import { Button } from "@/components/atoms/Button";
+import { DynamicLink } from "@/components/atoms/DynamicLink";
 import { GoToButtonProps } from "@/types/componentsCustomProps";
-import { Button } from "../atoms/Button";
-import { Link } from "../atoms/Link";
 
 export const GoToButton = ({
   href,
@@ -8,7 +8,7 @@ export const GoToButton = ({
   buttonProps,
   externalLink,
 }: GoToButtonProps) => (
-  <Link href={href} external={externalLink}>
+  <DynamicLink href={href} external={externalLink}>
     <Button {...buttonProps}>{children}</Button>
-  </Link>
+  </DynamicLink>
 );

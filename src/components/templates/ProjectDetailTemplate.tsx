@@ -1,7 +1,7 @@
 import { Badge } from "@/components/atoms/Badge";
+import { DynamicLink } from "@/components/atoms/DynamicLink";
+import { GoToButton } from "@/components/molecules/GoToButton";
 import { Project } from "@/types/contenful";
-import Link from "next/link";
-import { GoToButton } from "../molecules/GoToButton";
 
 export const ProjectDetailTemplate = ({ project }: { project: Project }) => {
   const {
@@ -9,12 +9,7 @@ export const ProjectDetailTemplate = ({ project }: { project: Project }) => {
   } = project;
   return (
     <article className="py-16">
-      <Link
-        href="/projects"
-        className="text-sm font-semibold text-emerald-700 hover:text-emerald-900"
-      >
-        ← Back to projects
-      </Link>
+      <DynamicLink href="/projects">← Back to projects</DynamicLink>
 
       <div className="mt-8 max-w-3xl">
         <h1 className="text-4xl font-bold text-slate-950 md:text-5xl">
