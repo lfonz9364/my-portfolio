@@ -1,8 +1,8 @@
+import { GoToButton } from "@/components/molecules/GoToButton";
+import { Section } from "@/components/molecules/Section";
 import { ContactSectionProps } from "@/types/componentsCustomProps";
 import { Card, HStack, Stack, Text } from "@chakra-ui/react";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
-import { GoToButton } from "../molecules/GoToButton";
-import { Section } from "../molecules/Section";
 
 export const ContactSection = ({ contact }: ContactSectionProps) => {
   const { heading, title, description, email, linkedInUrl, githubUrl } =

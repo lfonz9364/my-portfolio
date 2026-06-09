@@ -1,11 +1,11 @@
 "use client";
 
 import { ProjectCard } from "@/components/molecules/ProjectCard";
+import { Section } from "@/components/molecules/Section";
 import { SkillFilter } from "@/components/molecules/SkillFilter";
 import { Project } from "@/types/contenful";
 import { SimpleGrid } from "@chakra-ui/react";
 import { useMemo, useState } from "react";
-import { Section } from "../molecules/Section";
 
 export const ProjectsGrid = ({ projects }: { projects: Project[] }) => {
   const [selectedSkill, setSelectedSkill] = useState("All");

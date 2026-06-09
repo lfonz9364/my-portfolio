@@ -1,6 +1,6 @@
 import { SectionProps } from "@/types/componentsCustomProps";
 import { Box } from "@chakra-ui/react";
-import { SectionHeading } from "../atoms/SectionHeading";
+import { SectionHeading } from "@/components/atoms/SectionHeading";
 
 export const Section = ({
   name,

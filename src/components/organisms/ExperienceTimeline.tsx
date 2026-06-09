@@ -1,7 +1,7 @@
 import { ExperienceCard } from "@/components/molecules/ExperienceCard";
+import { Section } from "@/components/molecules/Section";
 import { Experience } from "@/types/contenful";
 import { SimpleGrid } from "@chakra-ui/react";
-import { Section } from "../molecules/Section";
 
 export const ExperienceTimeline = ({
   experiences,

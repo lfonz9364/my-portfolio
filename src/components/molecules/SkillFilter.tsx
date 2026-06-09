@@ -1,6 +1,6 @@
 import { SkillFilterProps } from "@/types/componentsCustomProps";
 import { HStack } from "@chakra-ui/react";
-import { Button } from "../atoms/Button";
+import { Button } from "@/components/atoms/Button";
 
 export const SkillFilter = ({
   skills,
