@@ -31,7 +31,7 @@ export const ProjectsGrid = ({ projects }: { projects: Project[] }) => {
 
   return (
     <Section
-      name="Portfolio"
+      name="portfolio"
       title="Projects"
       desc="Filter my projects by the skills you are looking for."
     >

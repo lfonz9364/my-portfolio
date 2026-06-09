@@ -9,7 +9,7 @@ export const ExperienceTimeline = ({
   experiences: Experience[];
 }) => (
   <Section
-    name="Experiences"
+    name="experiences"
     title="Work Experience"
     desc="A snapshot of my frontend, full-stack, and mobile development experience."
   >

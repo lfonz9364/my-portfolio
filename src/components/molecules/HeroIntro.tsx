@@ -25,12 +25,19 @@ export const HeroIntro = () => (
     haveNoTopBorder
   >
     <HStack gap={4} flexWrap="wrap">
-      <GoToButton href="/projects" buttonProps={{ colorPalette: "brand" }}>
+      <GoToButton href="#portfolio" buttonProps={{ colorPalette: "brand" }}>
         View Projects
       </GoToButton>
 
       <GoToButton
-        href="/contact"
+        href="#experiences"
+        buttonProps={{ variant: "surface", colorPalette: "cyan" }}
+      >
+        Career Journey
+      </GoToButton>
+
+      <GoToButton
+        href="#Contact Me"
         buttonProps={{ variant: "outline", colorPalette: "brand" }}
       >
         Contact Me
