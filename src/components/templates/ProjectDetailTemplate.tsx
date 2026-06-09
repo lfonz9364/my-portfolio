@@ -2,33 +2,34 @@ import { Badge } from "@/components/atoms/Badge";
 import { DynamicLink } from "@/components/atoms/DynamicLink";
 import { GoToButton } from "@/components/molecules/GoToButton";
 import { Project } from "@/types/contenful";
+import { Box, Heading, HStack, Stack, Text } from "@chakra-ui/react";
 
 export const ProjectDetailTemplate = ({ project }: { project: Project }) => {
   const {
     fields: { title, shortDescription, skills, liveUrl, githubUrl },
   } = project;
   return (
-    <article className="py-16">
+    <Box py={16}>
       <DynamicLink href="/projects">← Back to projects</DynamicLink>
 
-      <div className="mt-8 max-w-3xl">
-        <h1 className="text-4xl font-bold text-slate-950 md:text-5xl">
+      <Stack mt={8}>
+        <Heading size="xl" mt={2} fontWeight="bold" color="grey.950">
           {title}
-        </h1>
+        </Heading>
 
-        <p className="mt-6 text-lg leading-8 text-slate-600">
+        <Text mt={4} fontSize="sm" color="brand.700" lineHeight="1.6">
           {shortDescription}
-        </p>
+        </Text>
 
-        <div className="mt-6 flex flex-wrap gap-2">
+        <HStack mt={5} wrap="wrap" gap={2}>
           {skills?.map((skill, index) => (
             <Badge key={`${skill.fields.name}-${index}`}>
               {skill.fields.name}
             </Badge>
           ))}
-        </div>
+        </HStack>
 
-        <div className="mt-8 flex flex-wrap gap-4">
+        <HStack mt={5} wrap="wrap" gap={2}>
           {liveUrl && (
             <GoToButton href={liveUrl} externalLink>
               View Live
@@ -44,8 +45,8 @@ export const ProjectDetailTemplate = ({ project }: { project: Project }) => {
               View GitHub
             </GoToButton>
           )}
-        </div>
-      </div>
-    </article>
+        </HStack>
+      </Stack>
+    </Box>
   );
 };

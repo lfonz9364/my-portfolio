@@ -32,7 +32,7 @@ export const ExperienceCard = ({ experience }: { experience: Experience }) => {
         {summary}
       </Text>
 
-      <HStack className="mt-5 flex flex-wrap gap-2">
+      <HStack mt={5} wrap="wrap" gap={2}>
         {experience.fields.skills?.map((skill, index) => (
           <Badge key={`${id}-${skill.fields.name}-${index}`}>
             {skill.fields.name}
