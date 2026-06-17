@@ -1,4 +1,5 @@
 import { Badge } from "@/components/atoms/Badge";
+import { formatDate } from "@/lib/helpers";
 import { Experience } from "@/types/contenful";
 import { Box, HStack, Heading, Text } from "@chakra-ui/react";
 
@@ -17,7 +18,7 @@ export const ExperienceCard = ({ experience }: { experience: Experience }) => {
       rounded="2xl"
     >
       <Text fontSize="sm" fontWeight="medium" color="brand.700">
-        {startDate} — {endDate ?? "Present"}
+        {formatDate(startDate)} — {formatDate(endDate) ?? "Present"}
       </Text>
 
       <Heading size="xl" mt={2} fontWeight="bold" color="grey.950">
@@ -28,7 +29,13 @@ export const ExperienceCard = ({ experience }: { experience: Experience }) => {
         {company}
       </Text>
 
-      <Text mt={4} fontSize="sm" color="brand.700" lineHeight="1.6">
+      <Text
+        mt={4}
+        fontSize="sm"
+        color="brand.700"
+        lineHeight="1.6"
+        textAlign="justify"
+      >
         {summary}
       </Text>
 
