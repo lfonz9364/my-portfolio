@@ -21,6 +21,7 @@ export type Project = {
     githubUrl?: string;
     liveUrl?: string;
     featured?: boolean;
+    featuredImage?: ImageData;
   };
 };
 
@@ -72,7 +73,9 @@ export type ProjectSkeleton = EntrySkeletonType<
     slug: EntryFieldTypes.Symbol;
     shortDescription: EntryFieldTypes.Text;
     body: EntryFieldTypes.RichText;
-    skills?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<SkillSkeleton>>;
+    skills?: EntryFieldTypes.Array<
+      EntryFieldTypes.EntryLink<SkillSkeleton>
+    >;
     githubUrl?: EntryFieldTypes.Symbol;
     liveUrl?: EntryFieldTypes.Symbol;
     featured?: EntryFieldTypes.Boolean;
