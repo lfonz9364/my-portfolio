@@ -73,9 +73,7 @@ export type ProjectSkeleton = EntrySkeletonType<
     slug: EntryFieldTypes.Symbol;
     shortDescription: EntryFieldTypes.Text;
     body: EntryFieldTypes.RichText;
-    skills?: EntryFieldTypes.Array<
-      EntryFieldTypes.EntryLink<SkillSkeleton>
-    >;
+    skills?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<SkillSkeleton>>;
     githubUrl?: EntryFieldTypes.Symbol;
     liveUrl?: EntryFieldTypes.Symbol;
     featured?: EntryFieldTypes.Boolean;
@@ -128,3 +126,12 @@ export type ContactSectionEntry = Entry<
   ContactSectionSkeleton,
   "WITHOUT_UNRESOLVABLE_LINKS"
 >;
+
+export interface CustomRenderers {
+  renderEmbeddedEntry?: (node: any) => React.ReactNode;
+}
+
+export interface ContentfulRichTextProps {
+  content: Document;
+  customRenderers?: CustomRenderers;
+}
