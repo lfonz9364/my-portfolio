@@ -2,11 +2,20 @@ import { Badge } from "@/components/atoms/Badge";
 import { DynamicLink } from "@/components/atoms/DynamicLink";
 import { GoToButton } from "@/components/molecules/GoToButton";
 import { Project } from "@/types/contenful";
-import { Box, Heading, HStack, Stack, Text } from "@chakra-ui/react";
+import { Box, Heading, HStack, Stack } from "@chakra-ui/react";
+import { ContentfulRichText } from "../organisms/ContentfulRichText";
 
 export const ProjectDetailTemplate = ({ project }: { project: Project }) => {
   const {
-    fields: { title, shortDescription, skills, liveUrl, githubUrl },
+    fields: {
+      title,
+      shortDescription,
+      body,
+      featuredImage,
+      skills,
+      liveUrl,
+      githubUrl,
+    },
   } = project;
   return (
     <Box py={16}>
@@ -17,9 +26,7 @@ export const ProjectDetailTemplate = ({ project }: { project: Project }) => {
           {title}
         </Heading>
 
-        <Text mt={4} fontSize="sm" color="brand.700" lineHeight="1.6">
-          {shortDescription}
-        </Text>
+        <ContentfulRichText content={body} />
 
         <HStack mt={5} wrap="wrap" gap={2}>
           {skills?.map((skill, index) => (
