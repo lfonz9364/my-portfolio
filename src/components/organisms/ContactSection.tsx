@@ -1,0 +1,56 @@
+import { GoToButton } from "@/components/molecules/GoToButton";
+import { Section } from "@/components/molecules/Section";
+import { ContactSectionProps } from "@/types/componentsCustomProps";
+import { Card, HStack, Stack, Text } from "@chakra-ui/react";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+
+export const ContactSection = ({ contact }: ContactSectionProps) => {
+  const { heading, title, description, email, linkedInUrl, githubUrl } =
+    contact.fields;
+
+  return (
+    <Section name={heading} title={title} desc={description}>
+      <Card.Root bg="white" borderColor="gray.200" rounded="2xl" shadow="sm">
+        <Card.Body>
+          <Stack gap={6}>
+            <Text color="gray.600" maxW="2xl" lineHeight="1.8">
+              {description}
+            </Text>
+
+            <HStack gap={4} flexWrap="wrap">
+              <GoToButton
+                href={`mailto:${email}`}
+                externalLink
+                buttonProps={{
+                  variant: "solid",
+                  colorPalette: "red",
+                }}
+              >
+                <FaEnvelope /> Email Me
+              </GoToButton>
+
+              <GoToButton
+                href={linkedInUrl}
+                externalLink
+                buttonProps={{
+                  variant: "solid",
+                  colorPalette: "blue",
+                }}
+              >
+                <FaLinkedin /> LinkedIn
+              </GoToButton>
+
+              <GoToButton
+                href={githubUrl}
+                externalLink
+                buttonProps={{ variant: "subtle", colorPalette: "gray" }}
+              >
+                <FaGithub /> Github
+              </GoToButton>
+            </HStack>
+          </Stack>
+        </Card.Body>
+      </Card.Root>
+    </Section>
+  );
+};

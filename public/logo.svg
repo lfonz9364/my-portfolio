@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <g fill="none" stroke="#62D5F5" stroke-width="2.2" stroke-linecap="round">
+    <!-- Orbit 1: horizontal ellipse -->
+    <ellipse cx="24" cy="24" rx="20" ry="7.5"/>
+    <!-- Orbit 2: rotated 60deg -->
+    <ellipse cx="24" cy="24" rx="20" ry="7.5" transform="rotate(60 24 24)"/>
+    <!-- Orbit 3: rotated 120deg -->
+    <ellipse cx="24" cy="24" rx="20" ry="7.5" transform="rotate(120 24 24)"/>
+  </g>
+  <!-- Center hexagon -->
+  <polygon points="24,14 31.5,18.5 31.5,27.5 24,32 16.5,27.5 16.5,18.5" 
+           fill="transparent" stroke="transparent" stroke-width="1.5"/>
+  <!-- AC text -->
+  <text x="24" y="26.5" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="8" font-weight="300" fill="#62D5F5" letter-spacing="0.5">AC</text>
+</svg>

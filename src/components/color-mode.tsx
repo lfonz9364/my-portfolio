@@ -2,8 +2,8 @@
 
 import type { IconButtonProps, SpanProps } from "@chakra-ui/react";
 import { ClientOnly, IconButton, Skeleton, Span } from "@chakra-ui/react";
-import type { ThemeProviderProps } from "next-themes";
-import { ThemeProvider, useTheme } from "next-themes";
+import type { ThemeProviderProps } from "@teispace/next-themes";
+import { ThemeProvider, useTheme } from "@teispace/next-themes";
 import * as React from "react";
 import { LuMoon, LuSun } from "react-icons/lu";
 
@@ -82,13 +82,13 @@ export const LightMode = React.forwardRef<HTMLSpanElement, SpanProps>(
         color="fg"
         display="contents"
         className="chakra-theme light"
-        colorPalette="gray"
+        colorPalette="brand"
         colorScheme="light"
         ref={ref}
         {...props}
       />
     );
-  }
+  },
 );
 
 export const DarkMode = React.forwardRef<HTMLSpanElement, SpanProps>(
@@ -98,11 +98,11 @@ export const DarkMode = React.forwardRef<HTMLSpanElement, SpanProps>(
         color="fg"
         display="contents"
         className="chakra-theme dark"
-        colorPalette="gray"
+        colorPalette="brand"
         colorScheme="dark"
         ref={ref}
         {...props}
       />
     );
-  }
+  },
 );
