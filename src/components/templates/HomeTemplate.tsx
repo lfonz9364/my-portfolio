@@ -11,8 +11,8 @@ export const HomeTemplate = ({
 }: HomeTemplateProps) => (
   <>
     <HeroIntro />
-    <ProjectsGrid projects={projects.slice(0, 3)} />
-    <ExperienceTimeline experiences={experiences.slice(0, 3)} />
+    <ProjectsGrid projects={projects} />
+    <ExperienceTimeline experiences={experiences} />
     {contact && <ContactSection contact={contact} />}
   </>
 );
