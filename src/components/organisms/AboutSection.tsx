@@ -13,10 +13,9 @@ const skills = [
   "TailwindCSS",
 ];
 
-export const AboutTemplate = () => (
+export const AboutSection = () => (
   <Box py={16} borderTop="1px" borderColor="gray.200">
     <SectionHeading
-      eyebrow="About"
       title="Frontend engineer focused on practical, user-friendly products"
       description="I enjoy building clean, maintainable interfaces backed by thoughtful architecture."
     />
