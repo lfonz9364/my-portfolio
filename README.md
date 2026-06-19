@@ -239,9 +239,9 @@ This portfolio demonstrates:
 
 ## 📬 Contact
 
-- Email: _(your email)_
-- LinkedIn: _(your profile)_
-- GitHub: _(your GitHub)_
+- Email: <alfons.caroles@gmail.com>
+- LinkedIn: <linkedin.com/in/alfonscaroles>
+- GitHub: <https://github.com/lfonz9364>
 
 ---
 
