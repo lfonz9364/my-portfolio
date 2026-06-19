@@ -5,6 +5,8 @@ export type Skill = {
   sys: { id: string };
   fields: {
     name: string;
+    iconName: string;
+    iconColor: string;
     slug: string;
     category?: string;
   };
@@ -62,7 +64,10 @@ export type ContactSection = {
 export type SkillSkeleton = EntrySkeletonType<
   {
     name: EntryFieldTypes.Text;
+    iconName: EntryFieldTypes.Text;
+    iconColor: EntryFieldTypes.Text;
     slug: EntryFieldTypes.Symbol;
+    category: EntryFieldTypes.Text;
   },
   "skill"
 >;
@@ -85,6 +90,7 @@ export type ExperienceSkeleton = EntrySkeletonType<
   {
     company: EntryFieldTypes.Text;
     role: EntryFieldTypes.Text;
+    slug: EntryFieldTypes.Text;
     summary?: EntryFieldTypes.Text;
     startDate: EntryFieldTypes.Date;
     endDate?: EntryFieldTypes.Date;
