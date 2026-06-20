@@ -1,6 +1,6 @@
 import { formatDate } from "@/lib/helpers";
 import { Experience } from "@/types/contenful";
-import { Box, Heading, HStack, Stack, Text } from "@chakra-ui/react";
+import { Box, Heading, Stack, Text, Wrap } from "@chakra-ui/react";
 import { Badge } from "../atoms/Badge";
 import { DynamicLink } from "../atoms/DynamicLink";
 import { ContentfulRichText } from "../organisms/ContentfulRichText";
@@ -18,9 +18,15 @@ export const ExperienceDetailTemplate = ({
       <DynamicLink href="/">← Back to Home</DynamicLink>
 
       <Stack mt={8}>
-        <Heading size="xl" mt={2} fontWeight="bold" color="gray.950">
+        <Text
+          color="brand.500"
+          fontSize="sm"
+          fontWeight="semibold"
+          textTransform="uppercase"
+          letterSpacing="wide"
+        >
           {company}
-        </Heading>
+        </Text>
 
         <Heading size="xl" mt={2} fontWeight="bold" color="brand.700">
           {role}
@@ -32,13 +38,13 @@ export const ExperienceDetailTemplate = ({
 
         <ContentfulRichText content={summary} />
 
-        <HStack mt={5} wrap="wrap" gap={2}>
+        <Wrap mt={5} gap={2}>
           {skills?.map((skill, index) => (
             <Badge key={`${skill.fields.name}-${index}`}>
               {skill.fields.name}
             </Badge>
           ))}
-        </HStack>
+        </Wrap>
       </Stack>
     </Box>
   );

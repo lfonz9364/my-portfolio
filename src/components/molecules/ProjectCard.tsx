@@ -53,14 +53,6 @@ export const ProjectCard = ({ project }: { project: Project }) => {
               {shortDescription}
             </Text>
 
-            <Wrap gap={2}>
-              {skills?.map((skill: Skill, index: number) => (
-                <Badge key={`${id}-${skill.fields.name}-${index}`}>
-                  {skill.fields.name}
-                </Badge>
-              ))}
-            </Wrap>
-
             <HStack gap={4} pt={2}>
               <DynamicLink
                 href={`/projects/${slug}`}
