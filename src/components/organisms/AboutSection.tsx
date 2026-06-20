@@ -1,6 +1,6 @@
 import { Badge } from "@/components/atoms/Badge";
-import { SectionHeading } from "@/components/atoms/SectionHeading";
-import { Box, Card, Heading, HStack, SimpleGrid, Text } from "@chakra-ui/react";
+import { Card, Heading, HStack, SimpleGrid, Text } from "@chakra-ui/react";
+import { Section } from "../molecules/Section";
 
 const skills = [
   "React",
@@ -14,12 +14,11 @@ const skills = [
 ];
 
 export const AboutSection = () => (
-  <Box py={16} borderTop="1px" borderColor="gray.200">
-    <SectionHeading
-      title="Frontend engineer focused on practical, user-friendly products"
-      description="I enjoy building clean, maintainable interfaces backed by thoughtful architecture."
-    />
-
+  <Section
+    name="about"
+    title="Frontend engineer focused on practical, user-friendly products"
+    desc="I enjoy building clean, maintainable interfaces backed by thoughtful architecture."
+  >
     <SimpleGrid columns={{ base: 1, md: 2 }} gap={8}>
       <Card.Root bg="white" borderColor="gray.200" rounded="2xl" shadow="sm">
         <Card.Body>
@@ -52,5 +51,5 @@ export const AboutSection = () => (
         </Card.Body>
       </Card.Root>
     </SimpleGrid>
-  </Box>
+  </Section>
 );
