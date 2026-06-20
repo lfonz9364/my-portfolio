@@ -1,25 +1,19 @@
-import { Badge } from "@/components/atoms/Badge";
-import { Card, Heading, HStack, SimpleGrid, Text } from "@chakra-ui/react";
+import { AboutProps } from "@/types/componentsCustomProps";
+import { Card, Heading, Stack, Text } from "@chakra-ui/react";
 import { Section } from "../molecules/Section";
+import { SkillFilter } from "../molecules/SkillFilter";
 
-const skills = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "React Native",
-  "Node.js",
-  "PostgreSQL",
-  "Contentful",
-  "TailwindCSS",
-];
-
-export const AboutSection = () => (
+export const AboutSection = ({
+  skills,
+  selectedSkills,
+  setSelectedSkills,
+}: AboutProps) => (
   <Section
     name="about"
     title="Frontend engineer focused on practical, user-friendly products"
     desc="I enjoy building clean, maintainable interfaces backed by thoughtful architecture."
   >
-    <SimpleGrid columns={{ base: 1, md: 2 }} gap={8}>
+    <Stack gap={8}>
       <Card.Root bg="white" borderColor="gray.200" rounded="2xl" shadow="sm">
         <Card.Body>
           <Text color="gray.600" lineHeight="1.8">
@@ -39,17 +33,22 @@ export const AboutSection = () => (
 
       <Card.Root bg="white" borderColor="gray.200" rounded="2xl" shadow="sm">
         <Card.Body>
-          <Heading fontWeight="bold" color="gray.950" size="4xl">
+          <Heading fontWeight="bold" color="brand.700" size="4xl">
             Core Skills
           </Heading>
 
-          <HStack mt={5} gap={2} flexWrap="wrap">
-            {skills.map((skill) => (
-              <Badge key={skill}>{skill}</Badge>
-            ))}
-          </HStack>
+          <Text color="gray.600" lineHeight="1.8" mt={5}>
+            Please select/deselect one or multiple skills to filter my related
+            project/s and experience/s.
+          </Text>
+
+          <SkillFilter
+            skills={skills}
+            selectedSkills={selectedSkills}
+            onSelectSkills={setSelectedSkills}
+          />
         </Card.Body>
       </Card.Root>
-    </SimpleGrid>
+    </Stack>
   </Section>
 );
