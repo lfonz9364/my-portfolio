@@ -1,6 +1,5 @@
-import { Badge } from "@/components/atoms/Badge";
 import { DynamicLink } from "@/components/atoms/DynamicLink";
-import { Project, Skill } from "@/types/contenful";
+import { Project } from "@/types/contenful";
 import {
   Card,
   HStack,
@@ -8,7 +7,6 @@ import {
   LinkOverlay,
   Stack,
   Text,
-  Wrap,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 
@@ -34,6 +32,8 @@ export const ProjectCard = ({ project }: { project: Project }) => {
         rounded="2xl"
         shadow="sm"
         transition="all 0.2s"
+        h="100%"
+        pb="48px"
         _hover={{ transform: "translateY(-4px)", shadow: "lg" }}
       >
         <LinkOverlay asChild>
@@ -41,12 +41,6 @@ export const ProjectCard = ({ project }: { project: Project }) => {
         </LinkOverlay>
         <Card.Body>
           <Stack gap={4}>
-            {featured && (
-              <Badge colorPalette="brand" alignSelf="flex-start">
-                Featured
-              </Badge>
-            )}
-
             <Card.Title color="brand.700">{title}</Card.Title>
 
             <Text color="gray.600" fontSize="sm" lineHeight="1.7">
@@ -82,6 +76,17 @@ export const ProjectCard = ({ project }: { project: Project }) => {
               )}
             </HStack>
           </Stack>
+
+          <Text
+            mt={8}
+            color="brand.500"
+            fontSize="sm"
+            lineHeight="1.7"
+            position="absolute"
+            bottom="24px"
+          >
+            Tap card for detail
+          </Text>
         </Card.Body>
       </Card.Root>
     </LinkBox>

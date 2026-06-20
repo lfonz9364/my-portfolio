@@ -9,13 +9,13 @@ import {
   Text,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { ContentfulRichText } from "../organisms/ContentfulRichText";
 
 export const ExperienceCard = ({ experience }: { experience: Experience }) => {
   const {
     sys: { id },
-    fields: { startDate, endDate, role, company, summary, slug },
+    fields: { startDate, endDate, role, company, shortSummary, slug },
   } = experience;
+
   return (
     <LinkBox>
       <Card.Root
@@ -24,6 +24,8 @@ export const ExperienceCard = ({ experience }: { experience: Experience }) => {
         rounded="2xl"
         shadow="sm"
         transition="all 0.2s"
+        h="100%"
+        pb="48px"
         _hover={{ transform: "translateY(-4px)", shadow: "lg" }}
       >
         <LinkOverlay asChild>
@@ -31,11 +33,11 @@ export const ExperienceCard = ({ experience }: { experience: Experience }) => {
         </LinkOverlay>
         <Card.Body>
           <Stack>
-            <Text fontSize="sm" fontWeight="medium" color="brand.700">
+            <Text fontSize="sm" fontWeight="medium" color="brand.500">
               {formatDate(startDate)} — {formatDate(endDate) ?? "Present"}
             </Text>
 
-            <Heading size="xl" mt={2} fontWeight="bold" color="gray.950">
+            <Heading size="xl" mt={2} fontWeight="bold" color="brand.700">
               {role}
             </Heading>
 
@@ -43,8 +45,21 @@ export const ExperienceCard = ({ experience }: { experience: Experience }) => {
               {company}
             </Text>
 
-            <ContentfulRichText content={summary} />
+            <Text color="gray.600">
+              {shortSummary}
+            </Text>
           </Stack>
+
+          <Text
+            mt={8}
+            color="brand.500"
+            fontSize="sm"
+            lineHeight="1.7"
+            position="absolute"
+            bottom="24px"
+          >
+            Tap card for detail
+          </Text>
         </Card.Body>
       </Card.Root>
     </LinkBox>

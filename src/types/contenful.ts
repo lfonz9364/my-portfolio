@@ -34,6 +34,7 @@ export type Experience = {
     company: string;
     role: string;
     summary: Document;
+    shortSummary: string;
     slug: string;
     startDate?: string;
     endDate?: string;
@@ -94,6 +95,7 @@ export type ExperienceSkeleton = EntrySkeletonType<
     role: EntryFieldTypes.Text;
     slug: EntryFieldTypes.Text;
     summary: EntryFieldTypes.RichText;
+    shortSummary: EntryFieldTypes.Text;
     startDate: EntryFieldTypes.Date;
     endDate?: EntryFieldTypes.Date;
     skills?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<SkillSkeleton>>;
