@@ -36,7 +36,9 @@ export const ProjectCard = ({ project }: { project: Project }) => {
         transition="all 0.2s"
         _hover={{ transform: "translateY(-4px)", shadow: "lg" }}
       >
-        <LinkOverlay as={NextLink} href={`projects/${slug}`} />
+        <LinkOverlay asChild>
+          <NextLink href={`projects/${slug}`} />
+        </LinkOverlay>
         <Card.Body>
           <Stack gap={4}>
             {featured && (
