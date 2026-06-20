@@ -214,7 +214,7 @@ export const ContentfulRichText: React.FC<ContentfulRichTextProps> = ({
 
   const options = createRichTextOptions(customRenderers);
   return (
-    <Stack textAlign="justify" mt={4} {...stackProps}>
+    <Stack textAlign="justify" mt={4} color="gray.900" {...stackProps}>
       {documentToReactComponents(content, options)}
     </Stack>
   );
