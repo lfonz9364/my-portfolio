@@ -7,7 +7,7 @@ export const SkillFilter = ({
   selectedSkills,
   onSelectSkills,
 }: SkillFilterProps) => (
-  <Wrap gap={3} flexWrap="wrap" my={8}>
+  <Wrap gap={3} my={8} justifyContent="space-between">
     {skills.map((skill) => {
       const { name, iconColor, iconName, slug, category } = skill.fields;
       const isAll = name === "All";
