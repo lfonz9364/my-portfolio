@@ -1,3 +1,4 @@
+import { StackProps } from "@chakra-ui/react";
 import { Document } from "@contentful/rich-text-types";
 import { Entry, EntryFieldTypes, EntrySkeletonType } from "contentful";
 
@@ -32,7 +33,7 @@ export type Experience = {
   fields: {
     company: string;
     role: string;
-    summary?: string;
+    summary: Document;
     startDate?: string;
     endDate?: string;
     skills?: Skill[];
@@ -91,7 +92,7 @@ export type ExperienceSkeleton = EntrySkeletonType<
     company: EntryFieldTypes.Text;
     role: EntryFieldTypes.Text;
     slug: EntryFieldTypes.Text;
-    summary?: EntryFieldTypes.Text;
+    summary: EntryFieldTypes.RichText;
     startDate: EntryFieldTypes.Date;
     endDate?: EntryFieldTypes.Date;
     skills?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<SkillSkeleton>>;
@@ -140,4 +141,5 @@ export interface CustomRenderers {
 export interface ContentfulRichTextProps {
   content: Document;
   customRenderers?: CustomRenderers;
+  stackProps?: StackProps;
 }

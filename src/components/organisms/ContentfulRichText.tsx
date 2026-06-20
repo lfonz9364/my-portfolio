@@ -6,6 +6,7 @@ import {
   Image,
   List,
   Separator,
+  Stack,
   Table,
   Text,
 } from "@chakra-ui/react";
@@ -207,9 +208,14 @@ const createRichTextOptions = (customRenderers?: CustomRenderers): Options => ({
 export const ContentfulRichText: React.FC<ContentfulRichTextProps> = ({
   content,
   customRenderers,
+  stackProps,
 }) => {
   if (!content) return null;
 
   const options = createRichTextOptions(customRenderers);
-  return <>{documentToReactComponents(content, options)}</>;
+  return (
+    <Stack textAlign="justify" {...stackProps}>
+      {documentToReactComponents(content, options)}
+    </Stack>
+  );
 };
