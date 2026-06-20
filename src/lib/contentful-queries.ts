@@ -61,6 +61,7 @@ const mapExperience = (entry: ExperienceEntry): Experience => ({
     company: entry.fields.company,
     role: entry.fields.role,
     summary: entry.fields.summary,
+    slug:entry.fields.slug,
     startDate: entry.fields.startDate,
     endDate: entry.fields.endDate,
     skills: entry.fields.skills?.filter(isDefined).map(mapSkill),
@@ -143,7 +144,7 @@ export const getExperiences = async (
   return entries.items.map(mapExperience);
 };
 
-export const getExperiencetBySlug = async (
+export const getExperienceBySlug = async (
   slug: string,
   preview = false,
 ): Promise<Experience | null> => {

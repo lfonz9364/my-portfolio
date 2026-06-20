@@ -34,6 +34,7 @@ export type Experience = {
     company: string;
     role: string;
     summary: Document;
+    slug: string;
     startDate?: string;
     endDate?: string;
     skills?: Skill[];
