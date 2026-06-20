@@ -64,3 +64,9 @@ export type SectionProps = {
   desc: string;
   haveNoTopBorder?: boolean;
 };
+
+export type DetailPageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
