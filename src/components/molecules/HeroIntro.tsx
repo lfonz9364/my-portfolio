@@ -1,5 +1,4 @@
-import { Badge } from "@/components/atoms/Badge";
-import { HStack, Wrap } from "@chakra-ui/react";
+import { HStack } from "@chakra-ui/react";
 import { GoToButton } from "./GoToButton";
 import { Section } from "./Section";
 
@@ -43,11 +42,5 @@ export const HeroIntro = () => (
         Contact Me
       </GoToButton>
     </HStack>
-
-    <Wrap gap={3} pt={4}>
-      {skills.map((skill) => (
-        <Badge key={skill}>{skill}</Badge>
-      ))}
-    </Wrap>
   </Section>
 );

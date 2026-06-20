@@ -13,6 +13,7 @@ import {
   ProjectSkeleton,
   Skill,
   SkillEntry,
+  SkillSkeleton,
 } from "@/types/contenful";
 import { contentfulClient, contentfulPreviewClient } from "./contentful";
 
@@ -29,7 +30,10 @@ const mapSkill = (entry: SkillEntry): Skill => ({
   },
   fields: {
     name: entry.fields.name,
+    iconName: entry.fields.iconName,
+    iconColor: entry.fields.iconColor,
     slug: entry.fields.slug,
+    category: entry.fields.category,
   },
 });
 
@@ -57,6 +61,8 @@ const mapExperience = (entry: ExperienceEntry): Experience => ({
     company: entry.fields.company,
     role: entry.fields.role,
     summary: entry.fields.summary,
+    shortSummary: entry.fields.shortSummary,
+    slug: entry.fields.slug,
     startDate: entry.fields.startDate,
     endDate: entry.fields.endDate,
     skills: entry.fields.skills?.filter(isDefined).map(mapSkill),
@@ -88,6 +94,17 @@ const mapContactSection = (entry: ContactSectionEntry): ContactSection => ({
     githubUrl: entry.fields.githubUrl,
   },
 });
+
+export const getSkills = async (preview = false): Promise<Skill[]> => {
+  const entries = await getClient(
+    preview,
+  ).withoutUnresolvableLinks.getEntries<SkillSkeleton>({
+    content_type: "skill",
+    order: ["-fields.slug", "-sys.createdAt"],
+  });
+
+  return entries.items.map(mapSkill);
+};
 
 export const getProjects = async (preview = false): Promise<Project[]> => {
   const entries = await getClient(
@@ -126,6 +143,21 @@ export const getExperiences = async (
   });
 
   return entries.items.map(mapExperience);
+};
+
+export const getExperienceBySlug = async (
+  slug: string,
+  preview = false,
+): Promise<Experience | null> => {
+  const entries = await getClient(
+    preview,
+  ).withoutUnresolvableLinks.getEntries<ExperienceSkeleton>({
+    content_type: "experience",
+    "fields.slug": slug,
+    limit: 1,
+  });
+
+  return entries.items[0] ? mapExperience(entries.items[0]) : null;
 };
 
 export const getHeroSection = async (

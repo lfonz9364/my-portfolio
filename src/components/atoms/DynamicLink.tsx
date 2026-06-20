@@ -1,39 +1,28 @@
+"use client";
+
 import { LinkProps } from "@/types/componentsCustomProps";
-import { Link as ChakraLink } from "@chakra-ui/react";
+import { Link } from "@chakra-ui/react";
 import NextLink from "next/link";
 
 export const DynamicLink = ({
   href,
   children,
   chakraLinkProps,
-  nextLinkProps,
   external,
 }: LinkProps) => {
-  if (external) {
-    return (
-      <ChakraLink
-        colorPalette="brand"
-        {...chakraLinkProps}
-        target="_blank"
-        rel="noreferrer"
-        _hover={{ textDecoration: "none" }}
-        href={href}
-      >
-        {children}
-      </ChakraLink>
-    );
-  }
+  const target = external ? "_blank" : "_self";
+  const rel = external ? "noopener noreferrer" : undefined;
 
   return (
-    <ChakraLink
-      asChild
+    <Link
       colorPalette="brand"
       {...chakraLinkProps}
+      asChild
+      target={target}
+      rel={rel}
       _hover={{ textDecoration: "none" }}
     >
-      <NextLink href={href} {...nextLinkProps}>
-        {children}
-      </NextLink>
-    </ChakraLink>
+      <NextLink href={href}>{children}</NextLink>
+    </Link>
   );
 };
