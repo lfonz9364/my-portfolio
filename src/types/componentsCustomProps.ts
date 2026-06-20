@@ -4,8 +4,8 @@ import {
   LinkProps as ChakraLinkProps,
 } from "@chakra-ui/react";
 import { LinkProps as NextLinkProps } from "next/link";
-import { ReactNode } from "react";
-import { ContactSection, Experience, Project } from "./contenful";
+import { Dispatch, ReactNode, SetStateAction } from "react";
+import { ContactSection, Experience, Project, Skill } from "./contenful";
 
 export type BadgeProps = ChakraBadgeProps & {
   children: string;
@@ -22,9 +22,9 @@ export type SectionHeadingProps = {
 };
 
 export type SkillFilterProps = {
-  skills: string[];
-  selectedSkill: string;
-  onSelectSkill: (skill: string) => void;
+  skills: Skill[];
+  selectedSkills: string[];
+  onSelectSkills: (skill: string[]) => void;
 };
 
 export type HeroIntroProps = {
@@ -36,6 +36,7 @@ export type HomeTemplateProps = {
   projects: Project[];
   experiences: Experience[];
   contact: ContactSection | null;
+  skills: Skill[];
 };
 
 export type LinkProps = {
@@ -63,4 +64,16 @@ export type SectionProps = {
   title: string;
   desc: string;
   haveNoTopBorder?: boolean;
+};
+
+export type DetailPageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
+
+export type AboutProps = {
+  skills: Skill[];
+  selectedSkills: string[];
+  setSelectedSkills: Dispatch<SetStateAction<string[]>>;
 };

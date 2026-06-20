@@ -1,27 +1,57 @@
-import { SkillFilterProps } from "@/types/componentsCustomProps";
-import { HStack } from "@chakra-ui/react";
 import { Button } from "@/components/atoms/Button";
+import { SkillFilterProps } from "@/types/componentsCustomProps";
+import { Wrap } from "@chakra-ui/react";
 
 export const SkillFilter = ({
   skills,
-  selectedSkill,
-  onSelectSkill,
+  selectedSkills,
+  onSelectSkills,
 }: SkillFilterProps) => (
-  <HStack gap={3} flexWrap="wrap" mb={8}>
+  <Wrap gap={3} my={8} justifyContent="space-between">
     {skills.map((skill) => {
-      const isActive = selectedSkill === skill;
+      const { name, iconColor, iconName, slug, category } = skill.fields;
+      const isAll = name === "All";
+      const isActive = selectedSkills.includes(name);
+
+      const getUpdatedSelectedSkills = () => {
+        if (isAll) return ["All"];
+
+        if (isActive) {
+          return selectedSkills.filter(
+            (selectedSkill) =>
+              selectedSkill !== name && selectedSkill !== "All",
+          );
+        }
+
+        const skillsListWithoutAll = selectedSkills.filter(
+          (selectedSkill) => selectedSkill !== "All",
+        );
+
+        return [name, ...skillsListWithoutAll];
+      };
+
+      const onBadgeClicked = () => {
+        const updatedSelectedFilter = getUpdatedSelectedSkills();
+
+        if (updatedSelectedFilter.length === 0) {
+          onSelectSkills(["All"]);
+          return;
+        }
+
+        onSelectSkills(updatedSelectedFilter);
+      };
 
       return (
         <Button
-          key={skill}
+          key={skill.sys.id}
           size="sm"
           colorPalette="brand"
-          variant={selectedSkill === skill ? "solid" : "outline"}
-          onClick={() => onSelectSkill(skill)}
+          variant={isActive ? "solid" : "outline"}
+          onClick={onBadgeClicked}
         >
-          {skill}
+          {name}
         </Button>
       );
     })}
-  </HStack>
+  </Wrap>
 );

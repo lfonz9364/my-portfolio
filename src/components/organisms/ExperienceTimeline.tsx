@@ -13,7 +13,7 @@ export const ExperienceTimeline = ({
     title="Work Experience"
     desc="A snapshot of my frontend, full-stack, and mobile development experience."
   >
-    <SimpleGrid gap={6}>
+    <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={6}>
       {experiences.map((experience) => (
         <ExperienceCard key={experience.sys.id} experience={experience} />
       ))}
