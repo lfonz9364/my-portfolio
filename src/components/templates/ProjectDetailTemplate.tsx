@@ -7,19 +7,11 @@ import { ContentfulRichText } from "../organisms/ContentfulRichText";
 
 export const ProjectDetailTemplate = ({ project }: { project: Project }) => {
   const {
-    fields: {
-      title,
-      shortDescription,
-      body,
-      featuredImage,
-      skills,
-      liveUrl,
-      githubUrl,
-    },
+    fields: { title, body, featuredImage, skills, liveUrl, githubUrl },
   } = project;
   return (
     <Box py={16}>
-      <DynamicLink href="/projects">← Back to projects</DynamicLink>
+      <DynamicLink href="/">← Back to Home</DynamicLink>
 
       <Stack mt={8}>
         <Heading size="xl" mt={2} fontWeight="bold" color="grey.950">
