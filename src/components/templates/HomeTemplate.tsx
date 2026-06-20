@@ -5,6 +5,7 @@ import { ContactSection } from "@/components/organisms/ContactSection";
 import { ExperienceTimeline } from "@/components/organisms/ExperienceTimeline";
 import { ProjectsGrid } from "@/components/organisms/ProjectsGrid";
 import { HomeTemplateProps } from "@/types/componentsCustomProps";
+import { Box } from "@chakra-ui/react";
 import { useMemo, useState } from "react";
 import { AboutSection } from "../organisms/AboutSection";
 
@@ -41,7 +42,7 @@ export const HomeTemplate = ({
   }, [experiences, selectedSkills]);
 
   return (
-    <>
+    <Box textAlign="justify">
       <HeroIntro />
       <AboutSection
         skills={skills}
@@ -51,6 +52,6 @@ export const HomeTemplate = ({
       <ProjectsGrid projects={filteredProjects} />
       <ExperienceTimeline experiences={filteredExperiences} />
       {contact && <ContactSection contact={contact} />}
-    </>
+    </Box>
   );
 };
