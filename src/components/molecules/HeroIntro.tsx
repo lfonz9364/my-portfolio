@@ -2,19 +2,6 @@ import { HStack } from "@chakra-ui/react";
 import { GoToButton } from "./GoToButton";
 import { Section } from "./Section";
 
-const skills = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "React Native",
-  "Node.js",
-  "Contentful",
-  "Ruby on Rails",
-  "Ruby",
-  "Flutter",
-  "Dart",
-];
-
 export const HeroIntro = () => (
   <Section
     name="Frontend Engineer • Melbourne"
