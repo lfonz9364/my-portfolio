@@ -3,9 +3,18 @@ import {
   ButtonProps as ChakraButtonProps,
   LinkProps as ChakraLinkProps,
 } from "@chakra-ui/react";
+import { Document } from "@contentful/rich-text-types";
 import { LinkProps as NextLinkProps } from "next/link";
 import { Dispatch, ReactNode, SetStateAction } from "react";
-import { ContactSection, Experience, Project, Skill } from "./contenful";
+import {
+  AboutSection,
+  ContactSection,
+  Experience,
+  HeroSection,
+  Project,
+  SectionHeader,
+  Skill,
+} from "./contenful";
 
 export type BadgeProps = ChakraBadgeProps & {
   children: string;
@@ -18,7 +27,7 @@ export type ButtonProps = ChakraButtonProps & {
 export type SectionHeadingProps = {
   eyebrow?: string;
   title: string;
-  description?: string;
+  description?: Document;
 };
 
 export type SkillFilterProps = {
@@ -28,15 +37,17 @@ export type SkillFilterProps = {
 };
 
 export type HeroIntroProps = {
-  title: string;
-  subtitle: string;
+  content: HeroSection;
 };
 
 export type HomeTemplateProps = {
+  cardSectionHeaders: SectionHeader[];
   projects: Project[];
   experiences: Experience[];
-  contact: ContactSection | null;
+  contact: ContactSection;
   skills: Skill[];
+  heroSection: HeroSection;
+  aboutSection: AboutSection;
 };
 
 export type LinkProps = {
@@ -55,14 +66,14 @@ export type GoToButtonProps = {
 };
 
 export type ContactSectionProps = {
-  contact: ContactSection;
+  content: ContactSection;
 };
 
 export type SectionProps = {
   children: ReactNode;
   name: string;
   title: string;
-  desc: string;
+  desc?: Document;
   haveNoTopBorder?: boolean;
 };
 
@@ -73,7 +84,23 @@ export type DetailPageProps = {
 };
 
 export type AboutProps = {
+  content: AboutSection;
   skills: Skill[];
   selectedSkills: string[];
   setSelectedSkills: Dispatch<SetStateAction<string[]>>;
+};
+
+export type CardsGroupProps = {
+  headerContent: SectionHeader;
+  children: ReactNode[];
+};
+
+export type ExperienceTimelineProps = {
+  content: SectionHeader;
+  experiences: Experience[];
+};
+
+export type ProjectsGridProps = {
+  content: SectionHeader;
+  projects: Project[];
 };

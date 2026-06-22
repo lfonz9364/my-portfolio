@@ -1,3 +1,5 @@
+import { SectionHeader } from "@/types/contenful";
+
 export const formatDate = (d?: string) => {
   if (!d) return null;
 
@@ -9,4 +11,13 @@ export const formatDate = (d?: string) => {
   });
 
   return formatted;
+};
+
+export const getHeaderContent = (
+  headersContents: SectionHeader[],
+  sectionName: string,
+) => {
+  return headersContents.find(
+    (headerContent) => headerContent.fields.name === sectionName,
+  );
 };
