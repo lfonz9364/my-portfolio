@@ -200,7 +200,7 @@ export const getExperienceBySlug = async (
   return entries.items[0] ? mapExperience(entries.items[0]) : null;
 };
 
-export const getHeroSection = async (): Promise<HeroSection | null> => {
+export const getHeroSection = async (): Promise<HeroSection> => {
   const response =
     await contentfulClient.withoutUnresolvableLinks.getEntries<HeroSkeleton>({
       content_type: "heroSection",
@@ -209,10 +209,10 @@ export const getHeroSection = async (): Promise<HeroSection | null> => {
 
   const entry = response.items[0];
 
-  return entry ? mapHeroSection(entry) : null;
+  return mapHeroSection(entry);
 };
 
-export const getAboutSection = async (): Promise<AboutSection | null> => {
+export const getAboutSection = async (): Promise<AboutSection> => {
   const response =
     await contentfulClient.withoutUnresolvableLinks.getEntries<AboutSectionSkeleton>(
       {
@@ -223,10 +223,10 @@ export const getAboutSection = async (): Promise<AboutSection | null> => {
 
   const entry = response.items[0];
 
-  return entry ? mapAboutSection(entry) : null;
+  return mapAboutSection(entry);
 };
 
-export const getContactSection = async (): Promise<ContactSection | null> => {
+export const getContactSection = async (): Promise<ContactSection> => {
   const response =
     await contentfulClient.withoutUnresolvableLinks.getEntries<ContactSectionSkeleton>(
       {
@@ -237,7 +237,7 @@ export const getContactSection = async (): Promise<ContactSection | null> => {
 
   const entry = response.items[0];
 
-  return entry ? mapContactSection(entry) : null;
+  return mapContactSection(entry);
 };
 
 export const getCardsSectionHeaders = async (
