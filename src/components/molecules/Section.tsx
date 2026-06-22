@@ -1,6 +1,7 @@
 import { SectionProps } from "@/types/componentsCustomProps";
 import { Box } from "@chakra-ui/react";
 import { SectionHeading } from "@/components/atoms/SectionHeading";
+import { convertToSnakeCase } from "@/lib/helpers";
 
 export const Section = ({
   name,
@@ -16,7 +17,7 @@ export const Section = ({
   return (
     <Box
       as="section"
-      id={name}
+      id={convertToSnakeCase(name)}
       py={{ base: 8, md: 16 }}
       scrollMarginTop="120px"
       {...haveBorder}

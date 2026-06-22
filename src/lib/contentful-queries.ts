@@ -1,4 +1,7 @@
 import {
+  AboutSection,
+  AboutSectionEntry,
+  AboutSectionSkeleton,
   ContactSection,
   ContactSectionEntry,
   ContactSectionSkeleton,
@@ -11,6 +14,9 @@ import {
   Project,
   ProjectEntry,
   ProjectSkeleton,
+  SectionHeader,
+  SectionHeaderEntry,
+  SectionHeaderSkeleton,
   Skill,
   SkillEntry,
   SkillSkeleton,
@@ -23,6 +29,8 @@ const getClient = (preview = false) =>
 const isDefined = <T>(value: T | undefined | null): value is T => {
   return value !== undefined && value !== null;
 };
+
+// ------------------------------- Mappings ------------------------------
 
 const mapSkill = (entry: SkillEntry): Skill => ({
   sys: {
@@ -69,15 +77,31 @@ const mapExperience = (entry: ExperienceEntry): Experience => ({
   },
 });
 
+const mapCardsSectionHeaders = (entry: SectionHeaderEntry): SectionHeader => ({
+  sys: {
+    id: entry.sys.id,
+  },
+  fields: {
+    name: entry.fields.name,
+    title: entry.fields.title,
+    description: entry.fields.description,
+  },
+});
+
 const mapHeroSection = (entry: HeroEntry): HeroSection => ({
   sys: {
     id: entry.sys.id,
   },
   fields: {
+    name: entry.fields.name,
     title: entry.fields.title,
-    subtitle: entry.fields.subtitle,
-    ctaText: entry.fields.ctaText,
-    ctaLink: entry.fields.ctaLink,
+    description: entry.fields.description,
+    filledButtonText: entry.fields.filledButtonText,
+    filledButtonLink: entry.fields.filledButtonLink,
+    surfaceButtonText: entry.fields.surfaceButtonText,
+    surfaceButtonLink: entry.fields.surfaceButtonLink,
+    outlineButtonText: entry.fields.outlineButtonText,
+    outlineButtonLink: entry.fields.outlineButtonLink,
   },
 });
 
@@ -86,7 +110,7 @@ const mapContactSection = (entry: ContactSectionEntry): ContactSection => ({
     id: entry.sys.id,
   },
   fields: {
-    heading: entry.fields.heading,
+    name: entry.fields.name,
     title: entry.fields.title,
     description: entry.fields.description,
     email: entry.fields.email,
@@ -94,6 +118,22 @@ const mapContactSection = (entry: ContactSectionEntry): ContactSection => ({
     githubUrl: entry.fields.githubUrl,
   },
 });
+
+const mapAboutSection = (entry: AboutSectionEntry): AboutSection => ({
+  sys: {
+    id: entry.sys.id,
+  },
+  fields: {
+    name: entry.fields.name,
+    title: entry.fields.title,
+    description: entry.fields.description,
+    shortBiography: entry.fields.shortBiography,
+    skillsTitle: entry.fields.skillsTitle,
+    skillFilterTitle: entry.fields.skillFilterTitle,
+  },
+});
+
+// ------------------------------- Queries ------------------------------
 
 export const getSkills = async (preview = false): Promise<Skill[]> => {
   const entries = await getClient(
@@ -111,7 +151,7 @@ export const getProjects = async (preview = false): Promise<Project[]> => {
     preview,
   ).withoutUnresolvableLinks.getEntries<ProjectSkeleton>({
     content_type: "project",
-    order: ["-fields.featured", "-sys.createdAt"],
+    order: ["-sys.createdAt"],
   });
 
   return entries.items.map(mapProject);
@@ -160,29 +200,55 @@ export const getExperienceBySlug = async (
   return entries.items[0] ? mapExperience(entries.items[0]) : null;
 };
 
-export const getHeroSection = async (
-  preview = false,
-): Promise<HeroSection | null> => {
-  const entries = await getClient(
-    preview,
-  ).withoutUnresolvableLinks.getEntries<HeroSkeleton>({
-    content_type: "heroSection",
-    limit: 1,
-  });
+export const getHeroSection = async (): Promise<HeroSection> => {
+  const response =
+    await contentfulClient.withoutUnresolvableLinks.getEntries<HeroSkeleton>({
+      content_type: "heroSection",
+      limit: 1,
+    });
 
-  return entries.items[0] ? mapHeroSection(entries.items[0]) : null;
+  const entry = response.items[0];
+
+  return mapHeroSection(entry);
 };
 
-export const getContactSection = async (): Promise<ContactSection | null> => {
+export const getAboutSection = async (): Promise<AboutSection> => {
   const response =
-    await contentfulClient.withoutUnresolvableLinks.getEntries<ContactSectionSkeleton>(
+    await contentfulClient.withoutUnresolvableLinks.getEntries<AboutSectionSkeleton>(
       {
-        content_type: "contactChannels",
+        content_type: "aboutSection",
         limit: 1,
       },
     );
 
   const entry = response.items[0];
 
-  return entry ? mapContactSection(entry) : null;
+  return mapAboutSection(entry);
+};
+
+export const getContactSection = async (): Promise<ContactSection> => {
+  const response =
+    await contentfulClient.withoutUnresolvableLinks.getEntries<ContactSectionSkeleton>(
+      {
+        content_type: "contactSection",
+        limit: 1,
+      },
+    );
+
+  const entry = response.items[0];
+
+  return mapContactSection(entry);
+};
+
+export const getCardsSectionHeaders = async (
+  preview = false,
+): Promise<SectionHeader[]> => {
+  const entries = await getClient(
+    preview,
+  ).withoutUnresolvableLinks.getEntries<SectionHeaderSkeleton>({
+    content_type: "cardsHeader",
+    order: ["-fields.name"],
+  });
+
+  return entries.items.map(mapCardsSectionHeaders);
 };

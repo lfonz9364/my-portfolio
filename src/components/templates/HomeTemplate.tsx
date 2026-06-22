@@ -4,16 +4,20 @@ import { HeroIntro } from "@/components/molecules/HeroIntro";
 import { ContactSection } from "@/components/organisms/ContactSection";
 import { ExperienceTimeline } from "@/components/organisms/ExperienceTimeline";
 import { ProjectsGrid } from "@/components/organisms/ProjectsGrid";
+import { getHeaderContent } from "@/lib/helpers";
 import { HomeTemplateProps } from "@/types/componentsCustomProps";
 import { Box } from "@chakra-ui/react";
 import { useMemo, useState } from "react";
 import { AboutSection } from "../organisms/AboutSection";
 
 export const HomeTemplate = ({
+  cardSectionHeaders,
   projects,
   experiences,
+  aboutSection,
+  heroSection,
   contact,
-  skills,
+  skills
 }: HomeTemplateProps) => {
   const [selectedSkills, setSelectedSkills] = useState(["All"]);
 
@@ -41,17 +45,29 @@ export const HomeTemplate = ({
     });
   }, [experiences, selectedSkills]);
 
+  const experiencesHeader = getHeaderContent(cardSectionHeaders, "experiences");
+
+  const projectsHeader = getHeaderContent(cardSectionHeaders, "portfolio");
+
   return (
     <Box textAlign="justify">
-      <HeroIntro />
+      <HeroIntro content={heroSection} />
       <AboutSection
-        skills={skills}
+      content={aboutSection}
+      skills={skills}
         selectedSkills={selectedSkills}
         setSelectedSkills={setSelectedSkills}
       />
-      <ProjectsGrid projects={filteredProjects} />
-      <ExperienceTimeline experiences={filteredExperiences} />
-      {contact && <ContactSection contact={contact} />}
+      {projectsHeader && (
+        <ProjectsGrid content={projectsHeader} projects={filteredProjects} />
+      )}
+      {experiencesHeader && (
+        <ExperienceTimeline
+          content={experiencesHeader}
+          experiences={filteredExperiences}
+        />
+      )}
+      <ContactSection content={contact} />
     </Box>
   );
 };

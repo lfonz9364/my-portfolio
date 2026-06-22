@@ -48,13 +48,6 @@ export const ProjectCard = ({ project }: { project: Project }) => {
             </Text>
 
             <HStack gap={4} pt={2}>
-              <DynamicLink
-                href={`/projects/${slug}`}
-                chakraLinkProps={{ fontWeight: "semibold" }}
-              >
-                Case Study →
-              </DynamicLink>
-
               {githubUrl && (
                 <DynamicLink
                   href={githubUrl}

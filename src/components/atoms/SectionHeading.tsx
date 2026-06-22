@@ -1,5 +1,6 @@
 import { SectionHeadingProps } from "@/types/componentsCustomProps";
 import { Heading, Stack, Text } from "@chakra-ui/react";
+import { ContentfulRichText } from "../organisms/ContentfulRichText";
 
 export const SectionHeading = ({
   eyebrow,
@@ -24,9 +25,7 @@ export const SectionHeading = ({
     </Heading>
 
     {description && (
-      <Text color="gray.600" fontSize="xl">
-        {description}
-      </Text>
+      <ContentfulRichText content={description} />
     )}
   </Stack>
 );
