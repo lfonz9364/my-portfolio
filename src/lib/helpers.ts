@@ -21,3 +21,5 @@ export const getHeaderContent = (
     (headerContent) => headerContent.fields.name === sectionName,
   );
 };
+
+export const convertToSnakeCase = (words: string) => words.split(" ").join("-");
