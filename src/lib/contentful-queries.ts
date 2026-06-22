@@ -246,7 +246,7 @@ export const getCardsSectionHeaders = async (
   const entries = await getClient(
     preview,
   ).withoutUnresolvableLinks.getEntries<SectionHeaderSkeleton>({
-    content_type: "sectionHeader",
+    content_type: "cardsHeader",
     order: ["-fields.name"],
   });
 

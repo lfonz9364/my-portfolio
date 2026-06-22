@@ -135,7 +135,7 @@ export type SectionHeaderSkeleton = EntrySkeletonType<
     title: EntryFieldTypes.Symbol;
     description?: EntryFieldTypes.RichText;
   },
-  "sectionHeader"
+  "cardsHeader"
 >;
 
 export type HeroSkeleton = EntrySkeletonType<
