@@ -1,21 +1,20 @@
 import { GoToButton } from "@/components/molecules/GoToButton";
 import { Section } from "@/components/molecules/Section";
 import { ContactSectionProps } from "@/types/componentsCustomProps";
-import { Card, HStack, Stack, Text } from "@chakra-ui/react";
+import { Card, HStack, Stack } from "@chakra-ui/react";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import { ContentfulRichText } from "./ContentfulRichText";
 
-export const ContactSection = ({ contact }: ContactSectionProps) => {
-  const { heading, title, description, email, linkedInUrl, githubUrl } =
-    contact.fields;
+export const ContactSection = ({ content }: ContactSectionProps) => {
+  const { name, title, description, email, linkedInUrl, githubUrl } =
+    content.fields;
 
   return (
-    <Section name={heading} title={title} desc={description}>
+    <Section name={name} title={title} desc={description}>
       <Card.Root bg="white" borderColor="gray.200" rounded="2xl" shadow="sm">
         <Card.Body>
           <Stack gap={6}>
-            <Text color="gray.600" maxW="2xl" lineHeight="1.8">
-              {description}
-            </Text>
+            <ContentfulRichText content={description} />
 
             <HStack gap={4} flexWrap="wrap">
               <GoToButton

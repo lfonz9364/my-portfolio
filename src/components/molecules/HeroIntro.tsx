@@ -1,46 +1,44 @@
+import { HeroIntroProps } from "@/types/componentsCustomProps";
 import { HStack } from "@chakra-ui/react";
 import { GoToButton } from "./GoToButton";
 import { Section } from "./Section";
 
-const skills = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "React Native",
-  "Node.js",
-  "Contentful",
-  "Ruby on Rails",
-  "Ruby",
-  "Flutter",
-  "Dart",
-];
+export const HeroIntro = ({ content }: HeroIntroProps) => {
+  const {
+    name,
+    title,
+    description,
+    filledButtonText,
+    filledButtonLink,
+    surfaceButtonText,
+    surfaceButtonLink,
+    outlineButtonText,
+    outlineButtonLink,
+  } = content.fields;
+  return (
+    <Section name={name} title={title} desc={description} haveNoTopBorder>
+      <HStack gap={4} flexWrap="wrap">
+        <GoToButton
+          href={filledButtonLink}
+          buttonProps={{ colorPalette: "brand" }}
+        >
+          {filledButtonText}
+        </GoToButton>
 
-export const HeroIntro = () => (
-  <Section
-    name="Frontend Engineer • Melbourne"
-    title="Building scalable web & mobile products with real-world impact"
-    desc="7+ years experience across React, Next.js, TypeScript, and React Native.
-        Focused on performance, clean architecture, and user experience."
-    haveNoTopBorder
-  >
-    <HStack gap={4} flexWrap="wrap">
-      <GoToButton href="#portfolio" buttonProps={{ colorPalette: "brand" }}>
-        View Projects
-      </GoToButton>
+        <GoToButton
+          href={surfaceButtonLink}
+          buttonProps={{ variant: "surface", colorPalette: "cyan" }}
+        >
+          {surfaceButtonText}
+        </GoToButton>
 
-      <GoToButton
-        href="#experiences"
-        buttonProps={{ variant: "surface", colorPalette: "cyan" }}
-      >
-        Career Journey
-      </GoToButton>
-
-      <GoToButton
-        href="#Contact Me"
-        buttonProps={{ variant: "outline", colorPalette: "brand" }}
-      >
-        Contact Me
-      </GoToButton>
-    </HStack>
-  </Section>
-);
+        <GoToButton
+          href={outlineButtonLink}
+          buttonProps={{ variant: "outline", colorPalette: "brand" }}
+        >
+          {outlineButtonText}
+        </GoToButton>
+      </HStack>
+    </Section>
+  );
+};

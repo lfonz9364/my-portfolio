@@ -12,6 +12,6 @@ export const contentfulClient = createClient({
 export const contentfulPreviewClient = createClient({
   space,
   environment,
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
+  accessToken: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN!,
   host: "preview.contentful.com",
 });

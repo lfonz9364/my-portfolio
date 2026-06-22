@@ -42,25 +42,51 @@ export type Experience = {
   };
 };
 
+export type SectionHeader = {
+  sys: { id: string };
+  fields: {
+    name: string;
+    title: string;
+    description?: Document;
+  };
+};
+
 export type HeroSection = {
   sys: { id: string };
   fields: {
+    name: string;
     title: string;
-    subtitle?: string;
-    ctaText?: string;
-    ctaLink?: string;
+    description?: Document;
+    filledButtonText: string;
+    filledButtonLink: string;
+    surfaceButtonText: string;
+    surfaceButtonLink: string;
+    outlineButtonText: string;
+    outlineButtonLink: string;
   };
 };
 
 export type ContactSection = {
   sys: { id: string };
   fields: {
-    heading: string;
+    name: string;
     title: string;
-    description: string;
+    description?: Document;
     email: string;
     linkedInUrl: string;
     githubUrl: string;
+  };
+};
+
+export type AboutSection = {
+  sys: { id: string };
+  fields: {
+    name: string;
+    title: string;
+    description?: Document;
+    shortBiography?: Document;
+    skillsTitle: string;
+    skillFilterTitle?: string;
   };
 };
 
@@ -103,26 +129,52 @@ export type ExperienceSkeleton = EntrySkeletonType<
   "experience"
 >;
 
+export type SectionHeaderSkeleton = EntrySkeletonType<
+  {
+    name: EntryFieldTypes.Symbol;
+    title: EntryFieldTypes.Symbol;
+    description?: EntryFieldTypes.RichText;
+  },
+  "cardsHeader"
+>;
+
 export type HeroSkeleton = EntrySkeletonType<
   {
-    title: EntryFieldTypes.Text;
-    subtitle?: EntryFieldTypes.Text;
-    ctaText?: EntryFieldTypes.Text;
-    ctaLink?: EntryFieldTypes.Symbol;
+    name: EntryFieldTypes.Symbol;
+    title: EntryFieldTypes.Symbol;
+    description?: EntryFieldTypes.RichText;
+    filledButtonText: EntryFieldTypes.Symbol;
+    filledButtonLink: EntryFieldTypes.Symbol;
+    surfaceButtonText: EntryFieldTypes.Symbol;
+    surfaceButtonLink: EntryFieldTypes.Symbol;
+    outlineButtonText: EntryFieldTypes.Symbol;
+    outlineButtonLink: EntryFieldTypes.Symbol;
   },
   "heroSection"
 >;
 
 export type ContactSectionSkeleton = EntrySkeletonType<
   {
-    heading: EntryFieldTypes.Symbol;
+    name: EntryFieldTypes.Symbol;
     title: EntryFieldTypes.Symbol;
-    description: EntryFieldTypes.Text;
+    description?: EntryFieldTypes.RichText;
     email: EntryFieldTypes.Symbol;
     linkedInUrl: EntryFieldTypes.Symbol;
     githubUrl: EntryFieldTypes.Symbol;
   },
-  "contactChannels"
+  "contactSection"
+>;
+
+export type AboutSectionSkeleton = EntrySkeletonType<
+  {
+    name: EntryFieldTypes.Symbol;
+    title: EntryFieldTypes.Symbol;
+    description?: EntryFieldTypes.RichText;
+    shortBiography?: EntryFieldTypes.RichText;
+    skillsTitle: EntryFieldTypes.Symbol;
+    skillFilterTitle?: EntryFieldTypes.Symbol;
+  },
+  "aboutSection"
 >;
 
 export type SkillEntry = Entry<SkillSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">;
@@ -131,9 +183,17 @@ export type ExperienceEntry = Entry<
   ExperienceSkeleton,
   "WITHOUT_UNRESOLVABLE_LINKS"
 >;
+export type SectionHeaderEntry = Entry<
+  SectionHeaderSkeleton,
+  "WITHOUT_UNRESOLVABLE_LINKS"
+>;
 export type HeroEntry = Entry<HeroSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">;
 export type ContactSectionEntry = Entry<
   ContactSectionSkeleton,
+  "WITHOUT_UNRESOLVABLE_LINKS"
+>;
+export type AboutSectionEntry = Entry<
+  AboutSectionSkeleton,
   "WITHOUT_UNRESOLVABLE_LINKS"
 >;
 
@@ -142,7 +202,7 @@ export interface CustomRenderers {
 }
 
 export interface ContentfulRichTextProps {
-  content: Document;
+  content?: Document;
   customRenderers?: CustomRenderers;
   stackProps?: StackProps;
 }
