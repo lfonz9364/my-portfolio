@@ -202,7 +202,7 @@ export interface CustomRenderers {
 }
 
 export interface ContentfulRichTextProps {
-  content: Document;
+  content?: Document;
   customRenderers?: CustomRenderers;
   stackProps?: StackProps;
 }
