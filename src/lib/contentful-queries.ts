@@ -151,7 +151,7 @@ export const getProjects = async (preview = false): Promise<Project[]> => {
     preview,
   ).withoutUnresolvableLinks.getEntries<ProjectSkeleton>({
     content_type: "project",
-    order: ["-fields.featured", "-sys.createdAt"],
+    order: ["-sys.createdAt"],
   });
 
   return entries.items.map(mapProject);
