@@ -47,7 +47,7 @@ export const HomeTemplate = ({
 
   const experiencesHeader = getHeaderContent(cardSectionHeaders, "experiences");
 
-  const projectsHeader = getHeaderContent(cardSectionHeaders, "projects");
+  const projectsHeader = getHeaderContent(cardSectionHeaders, "portfolio");
 
   return (
     <Box textAlign="justify">
