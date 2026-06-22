@@ -4,14 +4,6 @@ A modern, CMS-powered developer portfolio built with **Next.js App Router**, **C
 
 This portfolio is designed with a **product mindset**, allowing recruiters and visitors to quickly explore projects and experience by **filtering based on skills**.
 
----
-
-## 🌐 Live Demo
-
-tbc
-
----
-
 ## ✨ Features
 
 - 🔎 **Skill-based filtering**
@@ -34,78 +26,6 @@ tbc
   - Static + ISR rendering
   - Deployed on Vercel Edge
 
-- 🧭 **Clean UX Flow**
-  - Home → Work → Filter → Project → Contact
-
----
-
-## 🧭 User Flow
-
-```mermaid
-flowchart TD
-  A[User lands on Home] --> B[Home Screen]
-  B --> C{Next action}
-
-  C -->|About| D[About Screen]
-  C -->|Work| E[Work Screen]
-  C -->|Contact| F[Contact Screen]
-
-  E --> E1[View Projects + Experience]
-  E1 --> E2{Use Skill Filters?}
-
-  E2 -->|Yes| E3[Select skills]
-  E3 --> E4[Filtered results]
-  E4 --> G[Project Detail]
-
-  E2 -->|No| E5[Browse all]
-  E5 --> G
-
-  G --> H{Interested?}
-  H -->|Yes| F
-  H -->|No| I[Exit]
-```
-
----
-
-## 🧱 UI Wireframe
-
-```mermaid
-flowchart TD
-  A["Header / Nav"] --> B["Hero Section"]
-  B --> C["Skills"]
-  C --> D["Work Section"]
-
-  D --> E["Filters"]
-  D --> F["Projects"]
-  D --> G["Experience"]
-
-  F --> F1["Project Card"]
-  G --> G1["Experience Card"]
-
-  A --> H["Contact Section"]
-```
-
----
-
-## 🏗️ System Architecture
-
-```mermaid
-flowchart LR
-  A["User"] --> B["Vercel Hosting"]
-  B --> C["Next.js App"]
-
-  C --> D["App Router Pages"]
-  C --> E["Contentful Client"]
-
-  E --> F["Contentful CMS"]
-
-  C --> G["Filter Logic (URL Params)"]
-  C --> H["ISR / Static Rendering"]
-
-  I["GitHub"] --> J["Vercel CI/CD"]
-  J --> B
-```
-
 ---
 
 ## 🛠️ Tech Stack
@@ -115,7 +35,7 @@ flowchart LR
 - Next.js (App Router)
 - React
 - TypeScript
-- Tailwind CSS _(or Chakra UI if you choose)_
+- Chakra UI
 
 ### Backend / Data
 
@@ -139,20 +59,54 @@ flowchart LR
 
 ## 🧩 Content Model (Contentful)
 
+### `heroSection`
+
+- name
+- title
+- description
+- filledButtonText
+- filledButtonLink
+- surfaceButonText
+- surfaceButtonLink
+- outlineButtonText
+- outlineButtonLink
+
+### `contactSection`
+
+- name
+- title
+- description
+- email
+- linkedInUrl
+- githubUrl
+
+### `aboutSection`
+
+- name
+- title
+- description
+- shortBiography
+- skillsTitle
+- skillFilterTitle
+
 ### `skill`
 
 - name (React, Next.js, etc.)
-- slug (react, nextjs)
+- iconName (FaReact, RiNextjsFill, etc.)
+- iconColor (#54ffff,#000000, etc. )
+- slug (react, nextjs, etc.)
 - category (frontend, backend, etc.)
 
 ### `project`
 
 - title
 - slug
-- description
+- shortDescription
+- body
 - skills (linked entries)
 - githubUrl
 - liveUrl
+- featuredImage
 
 ### `experience`
 
@@ -160,7 +114,16 @@ flowchart LR
 - role
 - startDate
 - endDate
+- shortSummary
+- summary
 - skills (linked entries)
+- slug
+
+### `cardsHeader`
+
+- name
+- title
+- description
 
 ---
 
